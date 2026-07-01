@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>ALIF App</title>
+    
+    <!-- Telegram WebApp SDK -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    
+    <!-- CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--tg-theme-bg-color, #ffffff);
+            color: var(--tg-theme-text-color, #000000);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* ===== লোডিং স্ক্রিন ===== */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--tg-theme-secondary-bg-color, #f0f0f0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        #loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-container {
+            text-align: center;
+        }
+
+        /* ALIF টেক্সট — বড় ও স্টাইলিশ */
+        .alif-brand {
+            font-size: 4.5rem;
+            font-weight: 900;
+            letter-spacing: 4px;
+            background: linear-gradient(135deg, #0088cc, #00aaff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: none;
+            margin-bottom: 30px;
+            animation: pulse 1.8s ease-in-out infinite;
+        }
+
+        /* স্পিনার */
+        .spinner {
+            width: 48px;
+            height: 48px;
+            border: 5px solid var(--tg-theme-hint-color, #aaa);
+            border-top-color: #0088cc;
+            border-radius: 50%;
+            animation: spin 0.9s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.05); opacity: 0.8; }
+        }
+
+        /* ===== মেইন অ্যাপ কন্টেন্ট ===== */
+        #main-content {
+            width: 100%;
+            max-width: 420px;
+            padding: 24px 20px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        #main-content.visible {
+            opacity: 1;
+        }
+
+        .app-card {
+            background: var(--tg-theme-bg-color, #ffffff);
+            border-radius: 16px;
+            padding: 32px 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 1px solid var(--tg-theme-hint-color, #e0e0e0);
+        }
+
+        .app-icon {
+            font-size: 64px;
+            margin-bottom: 16px;
+        }
+
+        .app-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--tg-theme-text-color, #000);
+        }
+
+        .app-subtitle {
+            font-size: 16px;
+            color: var(--tg-theme-hint-color, #888);
+            margin-bottom: 24px;
+        }
+
+        .tg-button {
+            display: inline-block;
+            background: var(--tg-theme-button-color, #0088cc);
+            color: var(--tg-theme-button-text-color, #ffffff);
+            border: none;
+            padding: 12px 32px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        .tg-button:active {
+            opacity: 0.7;
+        }
+
+        /* ডার্ক মোড সাপোর্ট */
+        @media (prefers-color-scheme: dark) {
+            .app-card {
+                border-color: #333;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== লোডিং স্ক্রিন ===== -->
+    <div id="loading-screen">
+        <div class="loader-container">
+            <div class="alif-brand">ALIF</div>
+            <div class="spinner"></div>
+        </div>
+    </div>
+
+    <!-- ===== মেইন অ্যাপ ===== -->
+    <div id="main-content">
+        <div class="app-card">
+            <div class="app-icon">🚀</div>
+            <h1 class="app-title">ALIF App</h1>
+            <p class="app-subtitle">আপনার টেলিগ্রাম মিনি অ্যাপ</p>
+            
+            <button class="tg-button" id="actionBtn">
+                ক্লিক করুন
+            </button>
+            <p style="margin-top: 16px; font-size: 14px; color: var(--tg-theme-hint-color, #aaa);">
+                v1.0 — GitHub হোস্টেড
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // ===== টেলিগ্রাম WebApp ইন্সট্যান্স =====
+        const tg = window.Telegram.WebApp;
+        tg.expand(); // পুরো স্ক্রিনে খুলে
+
+        // ===== লোডিং স্ক্রিন হাইড করা =====
+        function hideLoading() {
+            const loading = document.getElementById('loading-screen');
+            const main = document.getElementById('main-content');
+            
+            loading.classList.add('hidden');
+            main.classList.add('visible');
+            
+            // টেলিগ্রামকে জানান অ্যাপ রেডি
+            tg.ready();
+        }
+
+        // ২ সেকেন্ড পর লোডিং শেষ (সিমুলেট)
+        setTimeout(hideLoading, 2000);
+
+        // ===== বাটন হ্যান্ডলার =====
+        document.getElementById('actionBtn').addEventListener('click', function() {
+            tg.showAlert('হ্যালো! 👋 এটা ALIF অ্যাপ থেকে মেসেজ।');
+            
+            // অথবা Haptic feedback (যদি সাপোর্ট করে)
+            if (tg.HapticFeedback) {
+                tg.HapticFeedback.impactOccurred('light');
+            }
+        });
+
+        // ===== ক্লোজ হ্যান্ডলার =====
+        tg.onEvent('viewportChanged', function() {
+            // স্ক্রিন রিসাইজ হলে যা করবে (অপশনাল)
+        });
+
+        console.log('✅ ALIF Telegram Mini App লোড হয়েছে!');
+    </script>
+</body>
+  </html>
