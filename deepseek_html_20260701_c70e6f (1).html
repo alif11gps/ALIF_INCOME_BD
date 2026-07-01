@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>ALIF Earn - মনিটাইজেশন</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        /* ===== গ্লোবাল স্টাইল ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #f5f7fa;
+            --card: #ffffff;
+            --text: #1a1a2e;
+            --hint: #6c757d;
+            --primary: #0088cc;
+            --primary-dark: #006699;
+            --success: #28a745;
+            --danger: #dc3545;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+            --radius: 16px;
+        }
+
+        [data-theme="dark"] {
+            --bg: #0f0f1a;
+            --card: #1a1a2e;
+            --text: #e8e8f0;
+            --hint: #8a8a9a;
+            --shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            padding: 16px;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        /* ===== লোডিং স্ক্রিন ===== */
+        #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        #loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .alif-brand {
+            font-size: 4.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #0088cc, #00ddff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: pulse 1.8s ease-in-out infinite;
+            letter-spacing: 6px;
+        }
+
+        .loader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid var(--hint);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-top: 24px;
+        }
+
+        .loader-text {
+            margin-top: 16px;
+            color: var(--hint);
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes pulse { 50% { transform: scale(1.05); opacity: 0.8; } }
+
+        /* ===== মেইন কন্টেইনার ===== */
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            display: none;
+        }
+
+        .container.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== কার্ড ===== */
+        .card {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 24px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(128,128,128,0.08);
+        }
+
+        .card h2 {
+            font-size: 20px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* ===== ফর্ম ===== */
+        .form-group {
+            margin-bottom: 14px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 2px solid rgba(128,128,128,0.15);
+            border-radius: 10px;
+            background: var(--bg);
+            color: var(--text);
+            font-size: 15px;
+            transition: border 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 60px;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            color: #fff;
+        }
+
+        .btn:active {
+            transform: scale(0.97);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        }
+
+        .btn-success {
+            background: var(--success);
+        }
+
+        .btn-danger {
+            background: var(--danger);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-sm {
+            padding: 6px 14px;
+            font-size: 13px;
+            width: auto;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* ===== ব্যালেন্স ===== */
+        .balance-card {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-radius: var(--radius);
+            padding: 28px;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        .balance-card .label {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .balance-card .amount {
+            font-size: 48px;
+            font-weight: 900;
+            margin: 8px 0;
+        }
+
+        .balance-card .sub {
+            font-size: 13px;
+            opacity: 0.7;
+        }
+
+        /* ===== টাস্ক আইটেম ===== */
+        .task-item {
+            background: var(--bg);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .task-item .info {
+            flex: 1;
+        }
+
+        .task-item .info h4 {
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .task-item .info p {
+            font-size: 13px;
+            color: var(--hint);
+        }
+
+        .task-item .reward {
+            font-weight: 700;
+            color: var(--success);
+            font-size: 15px;
+            white-space: nowrap;
+        }
+
+        .task-item .task-status {
+            font-size: 12px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .task-status.pending {
+            background: #ffc107;
+            color: #000;
+        }
+
+        .task-status.completed {
+            background: var(--success);
+            color: #fff;
+        }
+
+        /* ===== রেফারেল ===== */
+        .ref-link-box {
+            background: var(--bg);
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 13px;
+            word-break: break-all;
+            margin: 8px 0;
+            border: 1px dashed var(--hint);
+            color: var(--hint);
+        }
+
+        /* ===== অ্যাডমিন ===== */
+        .admin-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+
+        .admin-toggle .btn {
+            width: auto;
+            padding: 10px 16px;
+            font-size: 13px;
+            border-radius: 30px;
+            background: var(--card);
+            color: var(--text);
+            border: 1px solid var(--hint);
+            box-shadow: var(--shadow);
+        }
+
+        .admin-panel {
+            display: none;
+        }
+
+        .admin-panel.active {
+            display: block;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .stat-box {
+            background: var(--bg);
+            padding: 14px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-box .num {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .stat-box .lbl {
+            font-size: 11px;
+            color: var(--hint);
+        }
+
+        /* ===== ইউজার লিস্ট ===== */
+        .user-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(128,128,128,0.08);
+        }
+
+        .user-row:last-child {
+            border-bottom: none;
+        }
+
+        .user-row .name {
+            font-weight: 600;
+        }
+
+        .user-row .detail {
+            font-size: 13px;
+            color: var(--hint);
+        }
+
+        /* ===== ট্যাব ===== */
+        .tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+
+        .tabs .tab {
+            padding: 8px 20px;
+            border-radius: 30px;
+            border: 2px solid rgba(128,128,128,0.15);
+            background: transparent;
+            color: var(--text);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .tabs .tab.active {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+        }
+
+        /* ===== ইউটিলিটি ===== */
+        .text-center { text-align: center; }
+        .mt-8 { margin-top: 8px; }
+        .mt-16 { margin-top: 16px; }
+        .gap-8 { gap: 8px; }
+        .flex { display: flex; }
+        .flex-between { display: flex; justify-content: space-between; align-items: center; }
+        .hidden { display: none !important; }
+
+        .badge {
+            background: var(--primary);
+            color: #fff;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        /* ===== রেস্পন্সিভ ===== */
+        @media (max-width: 480px) {
+            .balance-card .amount { font-size: 36px; }
+            .stats-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+            .stat-box { padding: 10px; }
+            .stat-box .num { font-size: 18px; }
+        }
+
+        /* ===== টেলিগ্রাম থিম ওভাররাইড ===== */
+        .tg-bg { background: var(--tg-theme-bg-color, var(--bg)); }
+        .tg-text { color: var(--tg-theme-text-color, var(--text)); }
+        .tg-hint { color: var(--tg-theme-hint-color, var(--hint)); }
+        .tg-button-color { background: var(--tg-theme-button-color, var(--primary)); }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== লোডিং স্ক্রিন ==================== -->
+    <div id="loading-screen">
+        <div class="alif-brand">ALIF</div>
+        <div class="loader-spinner"></div>
+        <div class="loader-text">💰 ইনকাম প্ল্যাটফর্ম</div>
+    </div>
+
+    <!-- ==================== মেইন অ্যাপ ==================== -->
+    <div class="container" id="appContainer">
+
+        <!-- ===== ব্যালেন্স কার্ড ===== -->
+        <div class="balance-card">
+            <div class="label">💰 আপনার ব্যালেন্স</div>
+            <div class="amount" id="userBalance">$0.00</div>
+            <div class="sub">👥 রেফারেল: <span id="refCount">0</span> | 🏆 টাস্ক: <span id="taskCount">0</span></div>
+            <button class="btn btn-outline" style="margin-top:12px; color:#fff; border-color:rgba(255,255,255,0.4);" id="withdrawBtn">
+                💸 উইথড্র করুন
+            </button>
+        </div>
+
+        <!-- ===== ট্যাব ===== -->
+        <div class="tabs">
+            <button class="tab active" data-tab="tasks">📋 টাস্ক</button>
+            <button class="tab" data-tab="referral">👥 রেফারেল</button>
+            <button class="tab" data-tab="history">📊 ইতিহাস</button>
+        </div>
+
+        <!-- ===== টাস্ক ট্যাব ===== -->
+        <div class="tab-content" id="tab-tasks">
+            <div class="card">
+                <h2>📋 আজকের টাস্ক</h2>
+                <div id="taskList"></div>
+            </div>
+        </div>
+
+        <!-- ===== রেফারেল ট্যাব ===== -->
+        <div class="tab-content hidden" id="tab-referral">
+            <div class="card">
+                <h2>👥 রেফারেল প্রোগ্রাম</h2>
+                <p style="color:var(--hint); margin-bottom:12px;">
+                    প্রতি রেফারেলের জন্য <strong style="color:var(--success);">$0.50</strong> বোনাস পান!
+                </p>
+                <div class="ref-link-box" id="refLinkDisplay">লোড হচ্ছে...</div>
+                <button class="btn btn-primary" id="copyRefBtn">📋 রেফারেল লিংক কপি</button>
+                <div class="flex-between mt-16" style="font-size:14px;">
+                    <span>মোট রেফারেল: <strong id="refTotal">0</strong></span>
+                    <span>আয়: <strong id="refEarnings">$0.00</strong></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== হিস্ট্রি ট্যাব ===== -->
+        <div class="tab-content hidden" id="tab-history">
+            <div class="card">
+                <h2>📊 লেনদেন ইতিহাস</h2>
+                <div id="historyList">
+                    <p style="color:var(--hint);">কোনো লেনদেন নেই</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== অ্যাডমিন টগল ===== -->
+        <div class="admin-toggle">
+            <button class="btn" id="adminToggleBtn">🔐 অ্যাডমিন</button>
+        </div>
+
+        <!-- ==================== অ্যাডমিন প্যানেল ==================== -->
+        <div class="admin-panel" id="adminPanel">
+            <div class="card">
+                <div class="flex-between">
+                    <h2>⚙️ অ্যাডমিন প্যানেল</h2>
+                    <button class="btn btn-sm btn-danger" id="closeAdminBtn">✕ বন্ধ</button>
+                </div>
+
+                <!-- স্ট্যাটস -->
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="num" id="adminTotalUsers">0</div>
+                        <div class="lbl">মোট ইউজার</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="num" id="adminTotalTasks">0</div>
+                        <div class="lbl">মোট টাস্ক</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="num" id="adminTotalEarn">$0</div>
+                        <div class="lbl">মোট পেমেন্ট</div>
+                    </div>
+                </div>
+
+                <!-- নতুন টাস্ক -->
+                <h3 style="margin:16px 0 12px;">➕ নতুন টাস্ক</h3>
+                <div class="form-group">
+                    <label>টাস্ক টাইটেল</label>
+                    <input type="text" id="adminTaskTitle" placeholder="যেমন: ইউটিউব ভিডিও লাইক" />
+                </div>
+                <div class="form-group">
+                    <label>বিবরণ</label>
+                    <textarea id="adminTaskDesc" placeholder="টাস্কের বিস্তারিত"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>রিওয়ার্ড ($)</label>
+                    <input type="number" id="adminTaskReward" placeholder="0.50" step="0.01" />
+                </div>
+                <button class="btn btn-success" id="adminAddTaskBtn">➕ টাস্ক যোগ করুন</button>
+
+                <!-- টাস্ক লিস্ট (অ্যাডমিন) -->
+                <h3 style="margin:20px 0 12px;">📋 সব টাস্ক</h3>
+                <div id="adminTaskList"></div>
+
+                <!-- ইউজার লিস্ট -->
+                <h3 style="margin:20px 0 12px;">👥 সব ইউজার</h3>
+                <div id="adminUserList"></div>
+
+                <!-- সেটিংস -->
+                <h3 style="margin:20px 0 12px;">⚙️ সেটিংস</h3>
+                <div class="form-group">
+                    <label>ন্যূনতম উইথড্র ($)</label>
+                    <input type="number" id="adminMinWithdraw" value="2.00" step="0.50" />
+                </div>
+                <button class="btn btn-primary" id="adminSaveSettings">সেটিংস সেভ করুন</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ==================== জাভাস্ক্রিপ্ট ==================== -->
+    <script>
+        // ======================================================================
+        //  ১. টেলিগ্রাম WebApp ইন্সট্যান্স
+        // ======================================================================
+        const tg = window.Telegram.WebApp;
+        if (tg) tg.expand();
+
+        // ======================================================================
+        //  ২. ডেটাবেস (LocalStorage)
+        // ======================================================================
+        const DB = {
+            get(key, def) {
+                try {
+                    const data = localStorage.getItem('alif_' + key);
+                    return data ? JSON.parse(data) : def;
+                } catch { return def; }
+            },
+            set(key, val) {
+                localStorage.setItem('alif_' + key, JSON.stringify(val));
+            },
+            // ইউজার ডেটা
+            getUser(userId) {
+                const users = this.get('users', {});
+                if (!users[userId]) {
+                    users[userId] = {
+                        balance: 0,
+                        referrals: [],
+                        completedTasks: [],
+                        history: [],
+                        joinedAt: Date.now()
+                    };
+                    this.set('users', users);
+                }
+                return users[userId];
+            },
+            saveUser(userId, data) {
+                const users = this.get('users', {});
+                users[userId] = data;
+                this.set('users', users);
+            },
+            // টাস্ক
+            getTasks() {
+                return this.get('tasks', [
+                    { id: 1, title: '📺 ইউটিউব ভিডিও লাইক', description: 'ভিডিওটি দেখে লাইক ও কমেন্ট করুন', reward: 0.50 },
+                    { id: 2, title: '📢 টেলিগ্রাম চ্যানেল জয়েন', description: '@alifchannel সাবস্ক্রাইব করুন', reward: 0.75 },
+                    { id: 3, title: '🐦 টুইট রিটুইট', description: 'আমাদের টুইট রিটুইট করুন', reward: 1.00 },
+                    { id: 4, title: '📱 ফেসবুক পোস্ট শেয়ার', description: 'পোস্টটি শেয়ার করুন', reward: 0.60 },
+                ]);
+            },
+            saveTasks(tasks) {
+                this.set('tasks', tasks);
+            },
+            // সেটিংস
+            getSettings() {
+                return this.get('settings', { minWithdraw: 2.00 });
+            },
+            saveSettings(settings) {
+                this.set('settings', settings);
+            }
+        };
+
+        // ======================================================================
+        //  ৩. কারেন্ট ইউজার
+        // ======================================================================
+        let currentUserId = null;
+        let currentUserData = null;
+        let allUsers = {};
+        let allTasks = [];
+
+        // টেলিগ্রাম থেকে ইউজার আইডি নেওয়া
+        function getUserId() {
+            if (tg && tg.initDataUnsafe && tg.initDataUnsafe.user) {
+                return String(tg.initDataUnsafe.user.id);
+            }
+            // ডেমো: localStorage-এ সেভ করা বা নতুন
+            let demoId = localStorage.getItem('alif_demo_user');
+            if (!demoId) {
+                demoId = 'user_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6);
+                localStorage.setItem('alif_demo_user', demoId);
+            }
+            return demoId;
+        }
+
+        // ======================================================================
+        //  ৪. কোর ফাংশন
+        // ======================================================================
+        function loadUser() {
+            currentUserId = getUserId();
+            allUsers = DB.get('users', {});
+            currentUserData = DB.getUser(currentUserId);
+            allTasks = DB.getTasks();
+            return currentUserData;
+        }
+
+        function saveUser() {
+            DB.saveUser(currentUserId, currentUserData);
+            allUsers = DB.get('users', {});
+        }
+
+        function saveTasks() {
+            DB.saveTasks(allTasks);
+        }
+
+        function getTotalEarnings() {
+            let total = 0;
+            Object.values(allUsers).forEach(u => {
+                total += u.balance;
+            });
+            return total;
+        }
+
+        // ======================================================================
+        //  ৫. UI আপডেট ফাংশন
+        // ======================================================================
+        function updateBalanceUI() {
+            document.getElementById('userBalance').textContent = '$' + currentUserData.balance.toFixed(2);
+            document.getElementById('refCount').textContent = currentUserData.referrals ? currentUserData.referrals.length : 0;
+            document.getElementById('taskCount').textContent = currentUserData.completedTasks ? currentUserData.completedTasks
+                .length : 0;
+        }
+
+        function renderTasks() {
+            const container = document.getElementById('taskList');
+            if (!allTasks.length) {
+                container.innerHTML = '<p style="color:var(--hint);text-align:center;">কোনো টাস্ক নেই</p>';
+                return;
+            }
+
+            const completed = currentUserData.completedTasks || [];
+
+            container.innerHTML = allTasks.map(task => {
+                const isDone = completed.includes(task.id);
+                return `
+                        <div class="task-item">
+                            <div class="info">
+                                <h4>${task.title}</h4>
+                                <p>${task.description}</p>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:8px;">
+                                <span class="reward">$${task.reward.toFixed(2)}</span>
+                                <button class="btn btn-sm ${isDone ? 'btn-success' : 'btn-primary'}" 
+                                        data-taskid="${task.id}" 
+                                        ${isDone ? 'disabled' : ''}>
+                                    ${isDone ? '✅' : 'করুন'}
+                                </button>
+                            </div>
+                        </div>
+                    `;
+            }).join('');
+
+            // ইভেন্ট লিসেনার
+            document.querySelectorAll('#taskList .btn-primary').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const taskId = parseInt(this.dataset.taskid);
+                    completeTask(taskId);
+                });
+            });
+        }
+
+        function completeTask(taskId) {
+            const task = allTasks.find(t => t.id === taskId);
+            if (!task) return;
+
+            if (currentUserData.completedTasks && currentUserData.completedTasks.includes(taskId)) {
+                if (tg) tg.showAlert('এই টাস্ক আগেই সম্পন্ন করেছেন!');
+                return;
+            }
+
+            // ব্যালেন্স যোগ
+            currentUserData.balance = (currentUserData.balance || 0) + task.reward;
+            if (!currentUserData.completedTasks) currentUserData.completedTasks = [];
+            currentUserData.completedTasks.push(taskId);
+
+            // হিস্ট্রি
+            if (!currentUserData.history) currentUserData.history = [];
+            currentUserData.history.push({
+                type: 'task',
+                taskId: taskId,
+                amount: task.reward,
+                title: task.title,
+                date: new Date().toISOString()
+            });
+
+            saveUser();
+            updateBalanceUI();
+            renderTasks();
+            renderHistory();
+            updateAdminStats();
+
+            if (tg) {
+                tg.showAlert('✅ টাস্ক সম্পন্ন! +$' + task.reward.toFixed(2));
+                if (tg.HapticFeedback) tg.HapticFeedback.notificationOccurred('success');
+            }
+        }
+
+        function renderReferral() {
+            const refCode = currentUserId;
+            const link = `https://t.me/ALIF_Earn_Bot?start=ref_${refCode}`;
+            document.getElementById('refLinkDisplay').textContent = link;
+
+            const refs = currentUserData.referrals || [];
+            document.getElementById('refTotal').textContent = refs.length;
+            document.getElementById('refEarnings').textContent = '$' + (refs.length * 0.50).toFixed(2);
+        }
+
+        function renderHistory() {
+            const container = document.getElementById('historyList');
+            const history = currentUserData.history || [];
+
+            if (!history.length) {
+                container.innerHTML = '<p style="color:var(--hint);text-align:center;">কোনো লেনদেন নেই</p>';
+                return;
+            }
+
+            container.innerHTML = history.slice().reverse().map(h => `
+                    <div class="user-row">
+                        <div>
+                            <div class="name">${h.title || 'টাস্ক'}</div>
+                            <div class="detail">${new Date(h.date).toLocaleDateString('bn-BD')}</div>
+                        </div>
+                        <span style="color:var(--success);font-weight:700;">+$${h.amount.toFixed(2)}</span>
+                    </div>
+                `).join('');
+        }
+
+        // ======================================================================
+        //  ৬. অ্যাডমিন ফাংশন
+        // ======================================================================
+        function renderAdminTasks() {
+            const container = document.getElementById('adminTaskList');
+            if (!allTasks.length) {
+                container.innerHTML = '<p style="color:var(--hint);">কোনো টাস্ক নেই</p>';
+                return;
+            }
+
+            container.innerHTML = allTasks.map(task => `
+                    <div class="user-row">
+                        <div>
+                            <div class="name">${task.title}</div>
+                            <div class="detail">$${task.reward.toFixed(2)} — ${task.description}</div>
+                        </div>
+                        <div style="display:flex;gap:6px;">
+                            <button class="btn btn-sm btn-danger admin-delete-task" data-taskid="${task.id}">🗑️</button>
+                        </div>
+                    </div>
+                `).join('');
+
+            document.querySelectorAll('.admin-delete-task').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const id = parseInt(this.dataset.taskid);
+                    if (confirm('টাস্ক ডিলিট করবেন?')) {
+                        allTasks = allTasks.filter(t => t.id !== id);
+                        saveTasks();
+                        renderAdminTasks();
+                        updateAdminStats();
+                        renderTasks();
+                    }
+                });
+            });
+        }
+
+        function renderAdminUsers() {
+            const container = document.getElementById('adminUserList');
+            const users = DB.get('users', {});
+
+            const entries = Object.entries(users);
+            if (!entries.length) {
+                container.innerHTML = '<p style="color:var(--hint);">কোনো ইউজার নেই</p>';
+                return;
+            }
+
+            container.innerHTML = entries.map(([id, data]) => `
+                    <div class="user-row">
+                        <div>
+                            <div class="name">${id}</div>
+                            <div class="detail">টাস্ক: ${(data.completedTasks||[]).length} | রেফারেল: ${(data.referrals||[]).length}</div>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:8px;">
+                            <span style="font-weight:700;color:var(--success);">$${data.balance.toFixed(2)}</span>
+                            <button class="btn btn-sm btn-success admin-pay-user" data-userid="${id}">💸 পে</button>
+                        </div>
+                    </div>
+                `).join('');
+
+            document.querySelectorAll('.admin-pay-user').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const uid = this.dataset.userid;
+                    const userData = DB.getUser(uid);
+                    if (userData.balance < 0.50) {
+                        alert('এই ইউজারের ব্যালেন্স কম!');
+                        return;
+                    }
+                    if (confirm(`$${userData.balance.toFixed(2)} পেমেন্ট করবেন?`)) {
+                        // পেমেন্ট সিমুলেট
+                        userData.history = userData.history || [];
+                        userData.history.push({
+                            type: 'withdraw',
+                            amount: userData.balance,
+                            date: new Date().toISOString(),
+                            status: 'paid'
+                        });
+                        userData.balance = 0;
+                        DB.saveUser(uid, userData);
+                        renderAdminUsers();
+                        updateAdminStats();
+                        alert('✅ পেমেন্ট সম্পন্ন!');
+                    }
+                });
+            });
+        }
+
+        function updateAdminStats() {
+            const users = DB.get('users', {});
+            const totalUsers = Object.keys(users).length;
+            document.getElementById('adminTotalUsers').textContent = totalUsers;
+            document.getElementById('adminTotalTasks').textContent = allTasks.length;
+            document.getElementById('adminTotalEarn').textContent = '$' + getTotalEarnings().toFixed(2);
+        }
+
+        // ======================================================================
+        //  ৭. ট্যাব সিস্টেম
+        // ======================================================================
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+
+                const tabId = this.dataset.tab;
+                document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+                document.getElementById('tab-' + tabId).classList.remove('hidden');
+
+                if (tabId === 'referral') renderReferral();
+                if (tabId === 'history') renderHistory();
+            });
+        });
+
+        // ======================================================================
+        //  ৮. অ্যাডমিন টগল
+        // ======================================================================
+        let adminOpen = false;
+
+        document.getElementById('adminToggleBtn').addEventListener('click', function() {
+            adminOpen = !adminOpen;
+            document.getElementById('adminPanel').classList.toggle('active', adminOpen);
+            if (adminOpen) {
+                renderAdminTasks();
+                renderAdminUsers();
+                updateAdminStats();
+                const settings = DB.getSettings();
+                document.getElementById('adminMinWithdraw').value = settings.minWithdraw || 2.00;
+            }
+        });
+
+        document.getElementById('closeAdminBtn').addEventListener('click', function() {
+            adminOpen = false;
+            document.getElementById('adminPanel').classList.remove('active');
+        });
+
+        // ======================================================================
+        //  ৯. অ্যাডমিন অ্যাকশন
+        // ======================================================================
+        document.getElementById('adminAddTaskBtn').addEventListener('click', function() {
+            const title = document.getElementById('adminTaskTitle').value.trim();
+            const desc = document.getElementById('adminTaskDesc').value.trim();
+            const reward = parseFloat(document.getElementById('adminTaskReward').value);
+
+            if (!title || !desc || isNaN(reward) || reward <= 0) {
+                alert('সব ফিল্ড সঠিকভাবে পূরণ করুন!');
+                return;
+            }
+
+            const newTask = {
+                id: Date.now(),
+                title,
+                description: desc,
+                reward
+            };
+
+            allTasks.push(newTask);
+            saveTasks();
+            renderAdminTasks();
+            updateAdminStats();
+            renderTasks();
+
+            document.getElementById('adminTaskTitle').value = '';
+            document.getElementById('adminTaskDesc').value = '';
+            document.getElementById('adminTaskReward').value = '';
+
+            alert('✅ টাস্ক যোগ হয়েছে!');
+        });
+
+        document.getElementById('adminSaveSettings').addEventListener('click', function() {
+            const minWithdraw = parseFloat(document.getElementById('adminMinWithdraw').value);
+            if (isNaN(minWithdraw) || minWithdraw < 0.50) {
+                alert('ন্যূনতম উইথড্র $0.50 এর বেশি হতে হবে');
+                return;
+            }
+            DB.saveSettings({ minWithdraw });
+            alert('✅ সেটিংস সেভ হয়েছে!');
+        });
+
+        // ======================================================================
+        //  ১০. উইথড্র
+        // ======================================================================
+        document.getElementById('withdrawBtn').addEventListener('click', function() {
+            const settings = DB.getSettings();
+            const minWithdraw = settings.minWithdraw || 2.00;
+
+            if (currentUserData.balance < minWithdraw) {
+                if (tg) {
+                    tg.showAlert(`⚠️ ন্যূনতম উইথড্র $${minWithdraw.toFixed(2)}`);
+                } else {
+                    alert(`⚠️ ন্যূনতম উইথড্র $${minWithdraw.toFixed(2)}`);
+                }
+                return;
+            }
+
+            if (tg) {
+                tg.showAlert(`💰 উইথড্র রিকোয়েস্ট পাঠানো হয়েছে! $${currentUserData.balance.toFixed(2)}`);
+            } else {
+                alert(`💰 উইথড্র রিকোয়েস্ট! $${currentUserData.balance.toFixed(2)}`);
+            }
+
+            // হিস্ট্রি
+            currentUserData.history = currentUserData.history || [];
+            currentUserData.history.push({
+                type: 'withdraw_request',
+                amount: currentUserData.balance,
+                date: new Date().toISOString(),
+                status: 'pending'
+            });
+            // ব্যালেন্স রিসেট করবেন না (অ্যাডমিন পেমেন্ট না করা পর্যন্ত)
+            saveUser();
+            renderHistory();
+            updateBalanceUI();
+        });
+
+        // ======================================================================
+        //  ১১. রেফারেল কপি
+        // ======================================================================
+        document.getElementById('copyRefBtn').addEventListener('click', function() {
+            const link = document.getElementById('refLinkDisplay').textContent;
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(link).then(() => {
+                    if (tg) tg.showAlert('✅ রেফারেল লিংক কপি হয়েছে!');
+                    else alert('✅ কপি হয়েছে!');
+                });
+            } else {
+                // Fallback
+                const textarea = document.createElement('textarea');
+                textarea.value = link;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                if (tg) tg.showAlert('✅ কপি হয়েছে!');
+                else alert('✅ কপি হয়েছে!');
+            }
+        });
+
+        // ======================================================================
+        //  ১২. রেফারেল লিংক পার্স (URL থেকে)
+        // ======================================================================
+        function handleReferral() {
+            // টেলিগ্রামের start_param চেক
+            if (tg && tg.initDataUnsafe && tg.initDataUnsafe.start_param) {
+                const param = tg.initDataUnsafe.start_param;
+                if (param.startsWith('ref_')) {
+                    const refId = param.replace('ref_', '');
+                    if (refId !== currentUserId) {
+                        // রেফারেল অ্যাড
+                        const refData = DB.getUser(refId);
+                        if (refData) {
+                            if (!refData.referrals) refData.referrals = [];
+                            if (!refData.referrals.includes(currentUserId)) {
+                                refData.referrals.push(currentUserId);
+                                refData.balance = (refData.balance || 0) + 0.50;
+                                DB.saveUser(refId, refData);
+
+                                // রেফারারের হিস্ট্রি
+                                refData.history = refData.history || [];
+                                refData.history.push({
+                                    type: 'referral_bonus',
+                                    amount: 0.50,
+                                    date: new Date().toISOString(),
+                                    from: currentUserId
+                                });
+                                DB.saveUser(refId, refData);
+
+                                // নতুন ইউজার বোনাস
+                                currentUserData.balance = (currentUserData.balance || 0) + 0.25;
+                                currentUserData.history = currentUserData.history || [];
+                                currentUserData.history.push({
+                                    type: 'signup_bonus',
+                                    amount: 0.25,
+                                    date: new Date().toISOString()
+                                });
+                                saveUser();
+
+                                if (tg) tg.showAlert('🎉 রেফারেল বোনাস পেয়েছেন! +$0.75');
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // ======================================================================
+        //  ১৩. ইনিশিয়ালাইজেশন
+        // ======================================================================
+        function initApp() {
+            loadUser();
+            handleReferral();
+            updateBalanceUI();
+            renderTasks();
+            renderReferral();
+            renderHistory();
+
+            // ১.৫ সেকেন্ড পর লোডিং হাইড
+            setTimeout(() => {
+                document.getElementById('loading-screen').classList.add('hidden');
+                document.getElementById('appContainer').classList.add('active');
+                if (tg) tg.ready();
+            }, 1500);
+
+            // ডার্ক মোড ডিটেক্ট
+            if (tg && tg.colorScheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        }
+
+        // সবকিছু রেডি হলে রান
+        document.addEventListener('DOMContentLoaded', initApp);
+    </script>
+</body>
+</html>
