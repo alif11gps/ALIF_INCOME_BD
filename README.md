@@ -2,27 +2,28 @@
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>ALIF_INCOME_BO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght=400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Hind Siliguri', sans-serif;
-            background-color: #f3f4f6;
+            background-color: #f8fafc;
             user-select: none;
             margin: 0;
             padding: 0;
+            overflow: hidden;
         }
         .tab-content { display: none; }
         .tab-content.active { display: block; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
     </style>
 </head>
-<body class="bg-slate-100 min-h-screen flex justify-center">
+<body class="bg-slate-100 min-h-screen flex justify-center items-stretch">
 
-    <!-- App Container: এখন এটি মোবাইলের স্ক্রিনের সমান (w-full min-h-screen) বড় হবে -->
-    <div class="w-full min-h-screen bg-[#f8fafc] text-slate-800 flex flex-col relative">
+    <!-- App Container: এটি এখন মোবাইলের ১০০% উইডথ এবং হাইট নিয়ে একদম ফিট হয়ে থাকবে -->
+    <div class="w-full min-h-screen bg-[#f8fafc] text-slate-800 flex flex-col justify-between relative overflow-hidden">
         
         <!-- ================= APP HEADER ================= -->
         <header class="bg-white border-b border-slate-100 px-4 py-4 flex items-center justify-between shrink-0 sticky top-0 z-50 shadow-sm">
@@ -36,7 +37,7 @@
         </header>
 
         <!-- ================= MAIN CONTENT SCROLLABLE ================= -->
-        <main class="flex-1 overflow-y-auto no-scrollbar px-4 py-4 pb-28 space-y-4">
+        <main class="flex-1 overflow-y-auto no-scrollbar px-4 py-4 pb-24 space-y-4">
             
             <!-- --- TAB 1: হোম --- -->
             <section id="home" class="tab-content active space-y-4">
@@ -213,7 +214,7 @@
         </main>
 
         <!-- ================= BOTTOM NAVIGATION BAR ================= -->
-        <nav class="absolute bottom-0 left-0 right-0 bg-white border-t border-slate-100 py-3 flex justify-around items-center z-50 shadow-[0_-4px_10px_rgba(0,0,0,0.03)]">
+        <nav class="bg-white border-t border-slate-100 py-3 flex justify-around items-center z-50 shadow-[0_-4px_10px_rgba(0,0,0,0.03)] pb-5">
             <!-- হোম -->
             <button onclick="switchTab('home')" class="nav-btn text-purple-600 flex flex-col items-center gap-0.5 w-14" data-tab="home">
                 <span class="text-xl">🏠</span>
