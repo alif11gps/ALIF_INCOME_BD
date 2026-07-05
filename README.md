@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ADDS JOB CITY</title>
+    <title>ALIF_INCOME_BO</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -25,7 +25,7 @@
         <!-- ================= APP HEADER ================= -->
         <header class="bg-white border-b border-slate-100 px-4 py-3 flex items-center justify-between shrink-0 sticky top-0 z-50">
             <div class="flex items-center gap-2">
-                <span class="text-xl font-bold text-slate-800 tracking-wide">ADDS JOB CITY 💼</span>
+                <span class="text-xl font-bold text-slate-800 tracking-wide">ALIF_INCOME_BO 💼</span>
                 <span class="text-blue-600 text-sm">✓</span>
             </div>
             <button class="text-slate-400 hover:text-slate-600">
@@ -155,7 +155,7 @@
                     </div>
 
                     <div class="bg-slate-900 p-3 rounded-xl flex items-center justify-between border border-slate-800">
-                        <input type="text" id="ref-link" readonly value="https://t.me/AddsJobCityBot?start=user" class="bg-transparent text-xs text-slate-400 outline-none flex-1 truncate">
+                        <input type="text" id="ref-link" readonly value="https://t.me/ALIF_INCOME_BO_Bot?start=user" class="bg-transparent text-xs text-slate-400 outline-none flex-1 truncate">
                         <button onclick="copyLink()" class="p-1.5 bg-gradient-to-r from-pink-500 to-purple-500 rounded-lg text-white text-xs">📋</button>
                     </div>
 
@@ -188,7 +188,7 @@
                         <div>
                             <label class="text-slate-500 font-bold block mb-1">পেমেন্ট মেথড</label>
                             <select id="method" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-slate-700 outline-none focus:border-blue-500">
-                                <option value="বিকার">বিকাশ</option>
+                                <option value="বিকাশ">বিকাশ</option>
                                 <option value="নগদ">নগদ</option>
                             </select>
                         </div>
