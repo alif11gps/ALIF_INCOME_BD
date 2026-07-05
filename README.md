@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ALIF_INCOME_BD</title>
+    <title>ADDS JOB CITY</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
@@ -30,7 +30,7 @@
     <!-- ================= APP HEADER ================= -->
     <header class="bg-white border-b border-gray-100 px-4 py-3 flex items-center justify-between shrink-0">
         <div class="flex items-center gap-2">
-            <span class="text-xl font-bold text-gray-800 tracking-wide">ALIF_INCOME_BD 💼</span>
+            <span class="text-xl font-bold text-gray-800 tracking-wide">ADDS JOB CITY 💼</span>
             <span class="text-emerald-500 font-bold text-sm">✓</span>
         </div>
         <div class="flex items-center gap-3">
@@ -51,17 +51,17 @@
                     MD
                 </div>
                 <div>
-                    <h3 class="font-bold text-gray-800 text-base flex items-center gap-1">MD Alife <span class="text-blue-500 text-xs">✓</span></h3>
+                    <h3 class="font-bold text-gray-800 text-base flex items-center gap-1">MD <span class="text-blue-500 text-xs">✓</span></h3>
                     <p class="text-xs text-gray-400">ID: 8847291</p>
                 </div>
             </div>
 
-            <!-- Total Balance Card (As per Screenshot_২০২৬-০৭-০৫-০৯-১৮-৩৩-৭০১_org.telegram.messenger.jpg) -->
+            <!-- Total Balance Card -->
             <div class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-2xl p-6 text-white shadow-md relative overflow-hidden">
                 <p class="text-sm font-medium opacity-90">মোট ব্যালেন্স</p>
                 <div class="flex items-baseline gap-1 mt-2">
                     <span class="text-4xl font-extrabold tracking-tight">৳</span>
-                    <h1 id="user-balance" class="text-5xl font-black tracking-tight">0.00</h1>
+                    <h1 id="user-balance" class="text-5xl font-black tracking-tight">1477.00</h1>
                 </div>
                 <div class="absolute -right-6 -bottom-6 w-24 h-24 bg-white/10 rounded-full blur-xl"></div>
             </div>
@@ -71,36 +71,36 @@
                 🎉 <marquee scrollamount="4">Aka*** সবেমাত্র ৳৯৬৭০ উত্তোলন করেছেন! • ভিডিও দেখে ইনকাম করুন প্রতি ভিডিও ১০ টাকা!</marquee>
             </div>
 
-            <!-- Grid Grid Data Arrays (As per Screenshot_২০২৬-০৭-০৫-০৯-১৮-৩৮-৩৫৫_org.telegram.messenger.jpg) -->
+            <!-- Grid Data Arrays -->
             <div class="grid grid-cols-2 gap-3">
                 <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex flex-col justify-between">
                     <div class="flex items-center gap-2 text-indigo-500 font-semibold text-sm">
                         ⚡ <span>মোট টাস্ক</span>
                     </div>
-                    <span id="stat-tasks" class="text-2xl font-bold text-gray-800 mt-2">0</span>
+                    <span id="stat-tasks" class="text-2xl font-bold text-gray-800 mt-2">3</span>
                 </div>
                 <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex flex-col justify-between">
                     <div class="flex items-center gap-2 text-purple-500 font-semibold text-sm">
                         👥 <span>মোট রেফার</span>
                     </div>
-                    <span id="stat-refers" class="text-2xl font-bold text-gray-800 mt-2">0</span>
+                    <span id="stat-refers" class="text-2xl font-bold text-gray-800 mt-2">3</span>
                 </div>
                 <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex flex-col justify-between">
                     <div class="flex items-center gap-2 text-pink-500 font-semibold text-sm">
                         📹 <span>বিজ্ঞাপন দেখা</span>
                     </div>
-                    <span id="stat-total-ads" class="text-2xl font-bold text-gray-800 mt-2">0</span>
+                    <span id="stat-total-ads" class="text-2xl font-bold text-gray-800 mt-2">105</span>
                 </div>
                 <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex flex-col justify-between">
                     <div class="flex items-center gap-2 text-emerald-500 font-semibold text-sm">
-                        💰 <span>বোনাস ব্যালেন্স</span>
+                        💰 <span>ননাস ব্যালেন্স</span>
                     </div>
                     <span class="text-2xl font-bold text-gray-800 mt-2">৳0.00</span>
                 </div>
             </div>
         </section>
 
-        <!-- --- TAB 2: TASKS (As per Screenshot_২০২৬-০৭-০৫-০৯-১৯-০৮-৬৫৪_org.telegram.messenger.jpg) --- -->
+        <!-- --- TAB 2: TASKS --- -->
         <section id="tasks" class="tab-content space-y-4">
             <div class="bg-indigo-50/60 border border-indigo-100/80 p-5 rounded-2xl text-center space-y-4">
                 <h2 class="text-lg font-bold text-indigo-900">বিজ্ঞাপন দেখুন</h2>
@@ -113,7 +113,7 @@
                 <div class="space-y-1 pt-2">
                     <div class="flex justify-between text-xs text-gray-500 px-1">
                         <span>আজকের সম্পন্ন</span>
-                        <span id="task-count-txt" class="font-bold">0 / 10</span>
+                        <span id="task-count-txt" class="font-bold">0 / 15</span>
                     </div>
                     <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
                         <div id="task-progress" class="bg-indigo-600 h-full w-0 transition-all duration-300"></div>
@@ -126,20 +126,20 @@
             </div>
         </section>
 
-        <!-- --- TAB 3: REFER (As per Screenshot_২০২৬-০৭-০৫-০৯-১৮-৪৭-৩১৯_org.telegram.messenger.jpg) --- -->
+        <!-- --- TAB 3: REFER --- -->
         <section id="refer" class="tab-content space-y-4">
             <div class="bg-slate-900 text-white p-5 rounded-2xl space-y-4 relative overflow-hidden">
                 <div class="flex items-center gap-2">
                     🎁 <h2 class="text-base font-bold">বন্ধুকে রেফার করুন এবং আয় করুন</h2>
                 </div>
-                <p class="text-xs text-slate-300 leading-relaxed">আপনার রেফার লিংকটি শেয়ার করুন এবং আপনার বন্ধুদের আমন্ত্রণ করুন। আপনার বন্ধু সাইন আপ করলে আপনি <span class="text-yellow-400 font-bold">৳৫০.০০ TAKA</span> বোনাস পাবেন।</p>
+                <p class="text-xs text-slate-300 leading-relaxed">আপনার রেফার লিংকটি শেয়ার করুন এবং আপনার বন্ধুদের আমন্ত্রণ করুন। আপনার বন্ধু সাইন আপ করলে আপনি <span class="text-yellow-400 font-bold">৳৯৯.০০ TAKA</span> বোনাস পাবেন।</p>
                 
                 <div class="bg-white/5 border border-white/10 text-xs py-2 px-3 rounded-lg text-center text-indigo-300 font-semibold">
-                    😊 প্রতি রেফারে ৳৫০.০০ TAKA বোনাস
+                    😊 প্রতি রেফারে ৳৯৯.০০ TAKA বোনাস
                 </div>
 
                 <div class="bg-black/20 p-2.5 rounded-xl flex items-center justify-between border border-white/5">
-                    <input type="text" id="ref-link" readonly value="https://t.me/AlifIncomeBdBot?start=userMD" class="bg-transparent text-xs text-slate-300 outline-none flex-1 truncate font-mono select-all">
+                    <input type="text" id="ref-link" readonly value="https://t.me/AddsJobCityBot?start=userMD" class="bg-transparent text-xs text-slate-300 outline-none flex-1 truncate font-mono select-all">
                 </div>
 
                 <div class="grid grid-cols-2 gap-3 pt-2">
@@ -149,15 +149,15 @@
             </div>
         </section>
 
-        <!-- --- TAB 4: WALLET (As per Screenshot_২০২৬-০৭-০৫-০৯-১৮-৫৭-৮৪২_org.telegram.messenger.jpg) --- -->
+        <!-- --- TAB 4: WALLET --- -->
         <section id="withdraw" class="tab-content space-y-4">
             <div class="bg-white border border-gray-100 p-4 rounded-xl space-y-3 shadow-sm">
                 <div class="bg-blue-50 border border-blue-100 p-3 rounded-xl space-y-2 text-xs">
                     <h4 class="font-bold text-blue-800 flex items-center gap-1">⚠️ উত্তোলনের শর্তাবলী</h4>
                     <p class="text-blue-700">উত্তোলনের জন্য নিচের যেকোনো একটি শর্ত পূরণ করতে হবে:</p>
                     <ul class="space-y-1 text-slate-600 font-medium">
-                        <li class="flex justify-between">• অন্তত ১৫০টি বিজ্ঞাপন দেখতে হবে। <span id="cond-ads" class="text-indigo-600 font-bold">0 / 150</span></li>
-                        <li class="flex justify-between">• অথবা অন্তত ২০টি সফল রেফার করতে হবে। <span id="cond-refers" class="text-purple-600 font-bold">0 / 20</span></li>
+                        <li class="flex justify-between">• অন্তত ১০০টি বিজ্ঞাপন দেখতে হবে। <span id="cond-ads" class="text-emerald-600 font-bold">105 / 100</span></li>
+                        <li class="flex justify-between">• অথবা অন্তত ৪টি সফল রেফার করতে হবে। <span id="cond-refers" class="text-purple-600 font-bold">3 / 4</span></li>
                     </ul>
                 </div>
 
@@ -176,7 +176,7 @@
                     </div>
                     <div>
                         <label class="text-gray-600 font-bold block mb-1">পরিমাণ (৳)</label>
-                        <input type="number" id="amount" placeholder="ন্যূনতম ৳১৫০০" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2.5 outline-none focus:border-indigo-500 transition-all font-mono">
+                        <input type="number" id="amount" placeholder="ন্যূনতম ৳১৩০০" class="w-full bg-gray-50 border border-gray-200 rounded-xl px-3 py-2.5 outline-none focus:border-indigo-500 transition-all font-mono">
                     </div>
                 </div>
 
@@ -186,7 +186,7 @@
             </div>
         </section>
 
-        <!-- --- TAB 5: SUPPORT (As per Screenshot_২০২৬-০৭-০৫-০৯-১৯-১৪-৫৮৬_org.telegram.messenger.jpg) --- -->
+        <!-- --- TAB 5: SUPPORT --- -->
         <section id="support" class="tab-content space-y-4">
             <div class="bg-white border border-gray-100 p-6 rounded-2xl text-center space-y-4 shadow-sm">
                 <h2 class="text-base font-bold text-gray-800">সাহায্য প্রয়োজন?</h2>
@@ -235,10 +235,10 @@
 
 <!-- ================= PLATFORM JAVASCRIPT CORE ENGINE ================= -->
 <script>
-    let balance = 0.00;
-    let todayTasks = 0;
-    let totalRefers = 0;
-    let totalAdsWatched = 0;
+    let balance = 1477.00;
+    let todayTasks = 3;
+    let totalRefers = 3;
+    let totalAdsWatched = 105;
 
     function switchTab(tabId) {
         document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
@@ -257,14 +257,14 @@
         document.getElementById('stat-refers').innerText = totalRefers;
         document.getElementById('stat-total-ads').innerText = totalAdsWatched;
         
-        document.getElementById('cond-ads').innerText = `${totalAdsWatched} / 150`;
-        document.getElementById('cond-refers').innerText = `${totalRefers} / 20`;
-        document.getElementById('task-count-txt').innerText = `${todayTasks} / 10`;
+        document.getElementById('cond-ads').innerText = `${totalAdsWatched} / 100`;
+        document.getElementById('cond-refers').innerText = `${totalRefers} / 4`;
+        document.getElementById('task-count-txt').innerText = `${todayTasks} / 15`;
     }
 
     function watchVideoTask() {
-        if(todayTasks >= 10) {
-            alert("আজকের সর্বোচ্চ ভিডিও লিমিট (১০/১০) শেষ হয়েছে!");
+        if(todayTasks >= 15) {
+            alert("আজকের সর্বোচ্চ ভিডিও লিমিট (১৫/১৫) শেষ হয়েছে!");
             return;
         }
         
@@ -275,17 +275,17 @@
             todayTasks++;
             totalAdsWatched++;
             
-            document.getElementById('task-progress').style.width = `${(todayTasks / 10) * 100}%`;
+            document.getElementById('task-progress').style.width = `${(todayTasks / 15) * 100}%`;
             updateUI();
             alert("সফলভাবে বিজ্ঞাপন দেখা সম্পন্ন হয়েছে! আপনার অ্যাকাউন্টে ৳১০ যোগ করা হয়েছে।");
         }, 1500);
     }
 
     function simulateReferral() {
-        balance += 50.00;
+        balance += 99.00;
         totalRefers++;
         updateUI();
-        alert("সফল রেফারেল নোড যুক্ত হয়েছে! বোনাস ৳৫০.০০ ব্যালেন্সে যোগ করা হলো।");
+        alert("সফল রেফারেল নোড যুক্ত হয়েছে! বোনাস ৳৯৯.০০ ব্যালেন্সে যোগ করা হলো।");
     }
 
     function copyLink() {
@@ -303,8 +303,8 @@
             alert("দয়া করে সঠিক অ্যাকাউন্ট নাম্বার এবং পরিমাণ লিখুন!");
             return;
         }
-        if(amount < 1500) {
-            alert("দুঃখিত! সর্বনিম্ন উত্তোলনের পরিমাণ ৳১৫০০ টাকা।");
+        if(amount < 1300) {
+            alert("দুঃখিত! সর্বনিম্ন উত্তোলনের পরিমাণ ৳১৩০০ টাকা।");
             return;
         }
         if(balance < amount) {
@@ -312,9 +312,9 @@
             return;
         }
 
-        // Hard lock check condition logic validation
-        if(totalAdsWatched < 150 || totalRefers < 20) {
-            alert("উত্তোলন লক! আপনাকে অবশ্যই অন্তত ১৫০টি ভিডিও দেখতে হবে এবং ২০টি সফল রেফার সম্পন্ন করতে হবে।");
+        // Hard lock check condition logic validation (Ads >= 100 OR Refers >= 4)
+        if(totalAdsWatched < 100 && totalRefers < 4) {
+            alert("উত্তোলন লক! আপনাকে অবশ্যই অন্তত ১০০টি ভিডিও দেখতে হবে অথবা ৪টি সফল রেফার সম্পন্ন করতে হবে।");
             return;
         }
 
