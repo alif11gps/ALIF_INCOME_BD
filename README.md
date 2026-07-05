@@ -22,7 +22,7 @@
 </head>
 <body class="bg-slate-100 min-h-screen flex justify-center items-stretch">
 
-    <!-- App Container: এটি এখন মোবাইলের ১০০% উইডথ এবং হাইট নিয়ে একদম ফিট হয়ে থাকবে -->
+    <!-- App Container -->
     <div class="w-full min-h-screen bg-[#f8fafc] text-slate-800 flex flex-col justify-between relative overflow-hidden">
         
         <!-- ================= APP HEADER ================= -->
@@ -96,7 +96,7 @@
                         <div class="text-emerald-500 mb-2">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         </div>
-                        <div class="text-slate-400 font-medium text-xs">বোনাস ব্যালেন্স</div>
+                        <div class="text-slate-400 font-medium text-xs">কোনাস ব্যালেন্স</div>
                         <span id="stat-refer-bonus" class="text-2xl font-bold text-slate-800 mt-1 block font-mono">৳0.00</span>
                     </div>
                 </div>
@@ -147,24 +147,28 @@
                 </div>
             </section>
 
-            <!-- --- TAB 4: রেফার --- -->
+            <!-- --- TAB 4: রেফার (সবুজ রঙ ও বড় সাইজে আপডেট করা হয়েছে) --- -->
             <section id="refer" class="tab-content space-y-4">
-                <div class="bg-[#1e2538] text-slate-100 p-6 rounded-3xl space-y-4 shadow-sm">
-                    <h2 class="text-base font-bold flex items-center gap-2">🎁 বন্ধুকে রেফার করুন এবং আয় করুন</h2>
+                <div class="bg-[#111827] text-slate-100 p-6 rounded-3xl space-y-5 shadow-lg border border-emerald-500/20">
+                    <h2 class="text-base font-bold flex items-center gap-2 text-emerald-400">🎁 বন্ধুকে রেফার করুন এবং আয় করুন</h2>
                     <p class="text-xs text-slate-400 leading-relaxed">আপনার রেফার লিংকটি শেয়ার করুন এবং আপনার বন্ধুদের আমন্ত্রণ করুন। আপনার বন্ধু সাইন আপ করলে আপনি ৳৫০.০০ বোনাস পাবেন।</p>
                     
-                    <div class="bg-slate-800/60 text-xs py-2.5 px-4 rounded-xl text-slate-300 font-medium inline-block">
+                    <div class="bg-emerald-950/80 text-xs py-3 px-4 rounded-xl text-emerald-300 font-semibold inline-block border border-emerald-500/30 shadow-inner">
                         😊 প্রতি রেফারে ৳৫০.০০ টাকা বোনাস
                     </div>
 
-                    <div class="bg-slate-900 p-3.5 rounded-xl flex items-center justify-between border border-slate-800">
-                        <input type="text" id="ref-link" readonly value="https://t.me/ALIF_INCOME_BO_Bot?start=user" class="bg-transparent text-xs text-slate-400 outline-none flex-1 truncate font-mono">
-                        <button onclick="copyLink()" class="p-2 bg-gradient-to-r from-pink-500 to-purple-500 rounded-lg text-white text-xs">📋</button>
+                    <!-- বড় এবং সবুজ কালার ইনপুট বক্স -->
+                    <div class="bg-slate-900 p-4 rounded-2xl flex flex-col gap-3 border-2 border-emerald-500 shadow-md bg-gradient-to-b from-slate-900 to-emerald-950/40">
+                        <span class="text-[11px] uppercase tracking-wider font-bold text-emerald-400/80 px-1">আপনার রেফারেল লিঙ্ক:</span>
+                        <div class="flex items-center justify-between gap-2 bg-black/40 p-2.5 rounded-xl border border-emerald-500/30">
+                            <input type="text" id="ref-link" readonly value="https://t.me/ALIF_INCOME_BO_Bot?start=user" class="bg-transparent text-sm text-emerald-300 font-bold outline-none flex-1 font-mono tracking-wide selection:bg-emerald-500/30">
+                            <button onclick="copyLink()" class="p-2.5 bg-emerald-500 hover:bg-emerald-600 rounded-xl text-white text-sm transition-all shadow-md active:scale-95">📋</button>
+                        </div>
                     </div>
 
-                    <div class="grid grid-cols-2 gap-3 pt-2">
-                        <button onclick="copyLink()" class="bg-gradient-to-r from-pink-500 to-purple-500 font-bold text-xs py-3 rounded-xl transition-all">লিংক কপি করুন</button>
-                        <button onclick="simulateReferral()" class="bg-indigo-600 hover:bg-indigo-700 font-bold text-xs py-3 rounded-xl transition-all">➕ ডেমো রেফার</button>
+                    <div class="grid grid-cols-2 gap-3 pt-1">
+                        <button onclick="copyLink()" class="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 font-bold text-xs py-3.5 rounded-xl transition-all shadow-md active:scale-95 text-white">লিংক কপি করুন</button>
+                        <button onclick="simulateReferral()" class="bg-slate-800 hover:bg-slate-700 font-bold text-xs py-3.5 rounded-xl transition-all border border-slate-700 active:scale-95 text-slate-200">➕ ডেমো রেফার</button>
                     </div>
                 </div>
             </section>
@@ -215,27 +219,22 @@
 
         <!-- ================= BOTTOM NAVIGATION BAR ================= -->
         <nav class="bg-white border-t border-slate-100 py-3 flex justify-around items-center z-50 shadow-[0_-4px_10px_rgba(0,0,0,0.03)] pb-5">
-            <!-- হোম -->
             <button onclick="switchTab('home')" class="nav-btn text-purple-600 flex flex-col items-center gap-0.5 w-14" data-tab="home">
                 <span class="text-xl">🏠</span>
                 <span class="text-[11px] font-bold">হোম</span>
             </button>
-            <!-- কাজ -->
             <button onclick="switchTab('tasks')" class="nav-btn text-slate-400 flex flex-col items-center gap-0.5 w-14" data-tab="tasks">
                 <span class="text-xl">📋</span>
                 <span class="text-[11px] font-bold">কাজ</span>
             </button>
-            <!-- সাপোর্ট -->
             <button onclick="switchTab('support')" class="nav-btn text-slate-400 flex flex-col items-center gap-0.5 w-14" data-tab="support">
                 <span class="text-xl">🎧</span>
                 <span class="text-[11px] font-bold">সাপোর্ট</span>
             </button>
-            <!-- রেফার -->
             <button onclick="switchTab('refer')" class="nav-btn text-slate-400 flex flex-col items-center gap-0.5 w-14" data-tab="refer">
                 <span class="text-xl">👥</span>
                 <span class="text-[11px] font-bold">রেফার</span>
             </button>
-            <!-- ওয়ালেট -->
             <button onclick="switchTab('withdraw')" class="nav-btn text-slate-400 flex flex-col items-center gap-0.5 w-14" data-tab="withdraw">
                 <span class="text-xl">💳</span>
                 <span class="text-[11px] font-bold">ওয়ালেট</span>
@@ -322,10 +321,4 @@
                 return;
             }
             
-            balance -= amount;
-            updateUI();
-            alert(`আপনার ৳${amount} টাকা উত্তোলনের রিকোয়েস্টটি সফল হয়েছে।`);
-        }
-    </script>
-</body>
-</html>
+            balance -= am
