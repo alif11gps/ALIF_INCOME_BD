@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ভিডিও. ডেকে টাকা ইনকাম. ২০ টা পার করলে উইথড্রু</title>
+    <title ভিডিও দেখে টাকা ইনকাম প্রতির রেফারে পাঁচ টাকা করে না দশ টাকা করে ২০ জনকে রেফার করলে টাকা উত্তোলন</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Fonts -->
