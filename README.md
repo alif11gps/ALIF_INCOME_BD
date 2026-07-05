@@ -2,28 +2,30 @@
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>ALIF_INCOME_BO</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght=400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Hind Siliguri', sans-serif;
             background-color: #f3f4f6;
             user-select: none;
+            margin: 0;
+            padding: 0;
         }
         .tab-content { display: none; }
         .tab-content.active { display: block; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
     </style>
 </head>
-<body class="flex justify-center items-center min-h-screen bg-slate-100 p-2">
+<body class="bg-slate-100 min-h-screen flex justify-center">
 
-    <!-- App Container -->
-    <div class="w-full max-w-md h-[92vh] bg-[#f8fafc] text-slate-800 rounded-3xl shadow-xl flex flex-col overflow-hidden relative border border-slate-200">
+    <!-- App Container: এখন এটি মোবাইলের স্ক্রিনের সমান (w-full min-h-screen) বড় হবে -->
+    <div class="w-full min-h-screen bg-[#f8fafc] text-slate-800 flex flex-col relative">
         
         <!-- ================= APP HEADER ================= -->
-        <header class="bg-white border-b border-slate-100 px-4 py-3 flex items-center justify-between shrink-0 sticky top-0 z-50">
+        <header class="bg-white border-b border-slate-100 px-4 py-4 flex items-center justify-between shrink-0 sticky top-0 z-50 shadow-sm">
             <div class="flex items-center gap-2">
                 <span class="text-xl font-bold text-slate-800 tracking-wide">ALIF_INCOME_BO 💼</span>
                 <span class="text-blue-600 text-sm">✓</span>
@@ -34,11 +36,11 @@
         </header>
 
         <!-- ================= MAIN CONTENT SCROLLABLE ================= -->
-        <main class="flex-1 overflow-y-auto no-scrollbar px-4 py-4 pb-24 space-y-4">
+        <main class="flex-1 overflow-y-auto no-scrollbar px-4 py-4 pb-28 space-y-4">
             
             <!-- --- TAB 1: হোম --- -->
             <section id="home" class="tab-content active space-y-4">
-                <div class="flex items-center gap-3 bg-white p-3 rounded-2xl border border-slate-100">
+                <div class="flex items-center gap-3 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm">
                     <div class="w-12 h-12 rounded-full border-2 border-purple-500 overflow-hidden flex items-center justify-center bg-purple-100 text-purple-600 font-bold">
                         MD
                     </div>
@@ -51,77 +53,77 @@
                 <!-- Main Balance Card -->
                 <div class="bg-gradient-to-br from-indigo-500 to-purple-600 rounded-3xl p-6 text-white shadow-md relative overflow-hidden">
                     <p class="text-xs font-medium text-indigo-100 tracking-wider">মোট ব্যালেন্স</p>
-                    <h1 class="text-4xl font-bold mt-2 flex items-baseline gap-1">
-                        <span class="text-2xl font-medium">৳</span>
-                        <span id="user-balance">0.00</span>
+                    <h1 class="text-5xl font-bold mt-2 flex items-baseline gap-1">
+                        <span class="text-3xl font-medium">৳</span>
+                        <span id="user-balance" class="font-mono">0.00</span>
                     </h1>
                 </div>
 
                 <!-- Info Notice Slider Ticker -->
-                <div class="bg-white border border-slate-100 p-3 rounded-xl text-xs text-slate-600 flex items-center gap-2 overflow-hidden">
+                <div class="bg-white border border-slate-100 p-3 rounded-xl text-xs text-slate-600 flex items-center gap-2 overflow-hidden shadow-sm">
                     <span class="shrink-0">🎉</span>
                     <marquee class="font-medium" scrollamount="4">Alif*** সবেমাত্র ৳১৫০০ উত্তোলন করেছেন! নতুন কাজের আপডেট পেতে আমাদের সাথে থাকুন।</marquee>
                 </div>
 
                 <!-- Dashboard Statistics Grid Layout -->
                 <div class="grid grid-cols-2 gap-3">
-                    <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm relative">
+                    <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm">
                         <div class="text-purple-500 mb-2">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                         </div>
                         <div class="text-slate-400 font-medium text-xs">মোট টাস্ক</div>
-                        <span id="stat-tasks" class="text-xl font-bold text-slate-800 mt-1 block">0</span>
+                        <span id="stat-tasks" class="text-2xl font-bold text-slate-800 mt-1 block font-mono">0</span>
                     </div>
                     
                     <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm">
                         <div class="text-blue-500 mb-2">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                         </div>
                         <div class="text-slate-400 font-medium text-xs">মোট রেফার</div>
-                        <span id="stat-refers" class="text-xl font-bold text-slate-800 mt-1 block">0</span>
+                        <span id="stat-refers" class="text-2xl font-bold text-slate-800 mt-1 block font-mono">0</span>
                     </div>
 
                     <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm">
                         <div class="text-indigo-500 mb-2">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                         </div>
                         <div class="text-slate-400 font-medium text-xs">বিজ্ঞাপন দেখা</div>
-                        <span id="stat-total-ads" class="text-xl font-bold text-slate-800 mt-1 block">0</span>
+                        <span id="stat-total-ads" class="text-2xl font-bold text-slate-800 mt-1 block font-mono">0</span>
                     </div>
 
                     <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm">
                         <div class="text-emerald-500 mb-2">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         </div>
                         <div class="text-slate-400 font-medium text-xs">বোনাস ব্যালেন্স</div>
-                        <span id="stat-refer-bonus" class="text-xl font-bold text-slate-800 mt-1 block">৳0.00</span>
+                        <span id="stat-refer-bonus" class="text-2xl font-bold text-slate-800 mt-1 block font-mono">৳0.00</span>
                     </div>
                 </div>
             </section>
 
             <!-- --- TAB 2: কাজ --- -->
             <section id="tasks" class="tab-content space-y-4">
-                <div class="bg-white border border-slate-100 p-5 rounded-3xl text-center shadow-sm space-y-4">
+                <div class="bg-white border border-slate-100 p-6 rounded-3xl text-center shadow-sm space-y-5">
                     <div>
-                        <h2 class="text-base font-bold text-slate-800">বিজ্ঞাপন দেখুন</h2>
+                        <h2 class="text-lg font-bold text-slate-800">বিজ্ঞাপন দেখুন</h2>
                         <p class="text-xs text-slate-400 mt-1">প্রতি বিজ্ঞাপন দেখে ৳১০.০০ ইনকাম করুন</p>
                     </div>
                     
-                    <div class="inline-flex bg-blue-50 text-blue-600 font-bold px-4 py-1.5 rounded-full text-xs border border-blue-100 items-center gap-1">
+                    <div class="inline-flex bg-blue-50 text-blue-600 font-bold px-5 py-2 rounded-full text-sm border border-blue-100 items-center gap-1">
                         💵 রিওয়ার্ড: ৳১০.০০টাকা
                     </div>
                     
-                    <div class="space-y-1 pt-1 text-left">
+                    <div class="space-y-2 pt-2 text-left">
                         <div class="flex justify-between text-xs text-slate-500 px-1">
                             <span>আজকের সম্পন্ন</span>
-                            <span id="task-count-txt" class="font-bold text-slate-700">0 / 20</span>
+                            <span id="task-count-txt" class="font-bold text-slate-700 font-mono">0 / 20</span>
                         </div>
-                        <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                        <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
                             <div id="task-progress" class="bg-red-500 h-full w-0 rounded-full transition-all duration-300"></div>
                         </div>
                     </div>
 
-                    <button onclick="watchVideoTask()" class="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-3 rounded-xl text-sm shadow-md transition-all">
+                    <button onclick="watchVideoTask()" class="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-3.5 rounded-xl text-sm shadow-md transition-all">
                         বিজ্ঞাপন দেখুন
                     </button>
                 </div>
@@ -129,15 +131,15 @@
 
             <!-- --- TAB 3: সাপোর্ট --- -->
             <section id="support" class="tab-content space-y-4">
-                <div class="bg-white border border-slate-100 p-5 rounded-3xl text-center shadow-sm space-y-4">
+                <div class="bg-white border border-slate-100 p-6 rounded-3xl text-center shadow-sm space-y-5">
                     <h2 class="text-base font-bold text-slate-800 text-left">সাহায্য প্রয়োজন?</h2>
                     
-                    <div class="bg-red-500 text-white p-6 rounded-2xl space-y-3">
-                        <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mx-auto text-xl">✈️</div>
-                        <h3 class="font-bold text-base">কাস্টমার সাপোর্ট</h3>
-                        <p class="text-xs text-red-100">যেকোনো সমস্যা সমাধানের জন্য আমাদের সাথে যোগাযোগ করুন</p>
+                    <div class="bg-red-500 text-white p-6 rounded-2xl space-y-4 shadow-sm">
+                        <div class="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center mx-auto text-2xl">✈️</div>
+                        <h3 class="font-bold text-lg">কাস্টমার সাপোর্ট</h3>
+                        <p class="text-xs text-red-100 leading-relaxed">যেকোনো সমস্যা সমাধানের জন্য আমাদের সাথে যোগাযোগ করুন</p>
                         
-                        <a href="https://t.me/Suupport7" target="_blank" class="inline-block bg-white/20 hover:bg-white/30 text-white font-medium text-xs px-6 py-2.5 rounded-full transition-all">
+                        <a href="https://t.me/Suupport7" target="_blank" class="inline-block bg-white/20 hover:bg-white/30 text-white font-medium text-sm px-8 py-3 rounded-full transition-all">
                             @Suupport7
                         </a>
                     </div>
@@ -146,29 +148,29 @@
 
             <!-- --- TAB 4: রেফার --- -->
             <section id="refer" class="tab-content space-y-4">
-                <div class="bg-[#1e2538] text-slate-100 p-5 rounded-3xl space-y-4 shadow-sm">
+                <div class="bg-[#1e2538] text-slate-100 p-6 rounded-3xl space-y-4 shadow-sm">
                     <h2 class="text-base font-bold flex items-center gap-2">🎁 বন্ধুকে রেফার করুন এবং আয় করুন</h2>
                     <p class="text-xs text-slate-400 leading-relaxed">আপনার রেফার লিংকটি শেয়ার করুন এবং আপনার বন্ধুদের আমন্ত্রণ করুন। আপনার বন্ধু সাইন আপ করলে আপনি ৳৫০.০০ বোনাস পাবেন।</p>
                     
-                    <div class="bg-slate-800/60 text-xs py-2 px-3 rounded-xl text-slate-300 font-medium inline-block">
+                    <div class="bg-slate-800/60 text-xs py-2.5 px-4 rounded-xl text-slate-300 font-medium inline-block">
                         😊 প্রতি রেফারে ৳৫০.০০ টাকা বোনাস
                     </div>
 
-                    <div class="bg-slate-900 p-3 rounded-xl flex items-center justify-between border border-slate-800">
-                        <input type="text" id="ref-link" readonly value="https://t.me/ALIF_INCOME_BO_Bot?start=user" class="bg-transparent text-xs text-slate-400 outline-none flex-1 truncate">
-                        <button onclick="copyLink()" class="p-1.5 bg-gradient-to-r from-pink-500 to-purple-500 rounded-lg text-white text-xs">📋</button>
+                    <div class="bg-slate-900 p-3.5 rounded-xl flex items-center justify-between border border-slate-800">
+                        <input type="text" id="ref-link" readonly value="https://t.me/ALIF_INCOME_BO_Bot?start=user" class="bg-transparent text-xs text-slate-400 outline-none flex-1 truncate font-mono">
+                        <button onclick="copyLink()" class="p-2 bg-gradient-to-r from-pink-500 to-purple-500 rounded-lg text-white text-xs">📋</button>
                     </div>
 
                     <div class="grid grid-cols-2 gap-3 pt-2">
-                        <button onclick="copyLink()" class="bg-gradient-to-r from-pink-500 to-purple-500 font-bold text-xs py-2.5 rounded-xl transition-all">লিংক কপি করুন</button>
-                        <button onclick="simulateReferral()" class="bg-indigo-600 hover:bg-indigo-700 font-bold text-xs py-2.5 rounded-xl transition-all">➕ ডেমো রেফার</button>
+                        <button onclick="copyLink()" class="bg-gradient-to-r from-pink-500 to-purple-500 font-bold text-xs py-3 rounded-xl transition-all">লিংক কপি করুন</button>
+                        <button onclick="simulateReferral()" class="bg-indigo-600 hover:bg-indigo-700 font-bold text-xs py-3 rounded-xl transition-all">➕ ডেমো রেফার</button>
                     </div>
                 </div>
             </section>
 
             <!-- --- TAB 5: ওয়ালেট --- -->
             <section id="withdraw" class="tab-content space-y-4">
-                <div class="bg-white border border-slate-200 p-5 rounded-3xl space-y-4 shadow-sm">
+                <div class="bg-white border border-slate-200 p-6 rounded-3xl space-y-5 shadow-sm">
                     
                     <!-- Withdrawal Conditions Box -->
                     <div class="bg-blue-50 border border-blue-100 p-4 rounded-xl space-y-2 text-xs">
@@ -176,33 +178,33 @@
                         <p class="text-slate-600">উত্তোলনের জন্য নিচের শর্তটি পূরণ করতে হবে:</p>
                         <ul class="space-y-1 text-slate-600 font-medium">
                             <li>• অন্তত <span class="text-blue-700 font-bold">১৫০টি</span> বিজ্ঞাপন দেখতে হবে।</li>
-                            <li class="bg-white/60 p-1.5 rounded mt-1 flex justify-between">
+                            <li class="bg-white/60 p-2 rounded mt-1 flex justify-between items-center">
                                 <span>আপনার বর্তমান সম্পন্ন:</span>
-                                <span id="cond-ads" class="text-emerald-600 font-bold">0 / 150</span>
+                                <span id="cond-ads" class="text-emerald-600 font-bold font-mono">0 / 150</span>
                             </li>
                         </ul>
                     </div>
 
                     <!-- Withdrawal Fields -->
-                    <div class="space-y-3 text-xs">
+                    <div class="space-y-4 text-xs">
                         <div>
                             <label class="text-slate-500 font-bold block mb-1">পেমেন্ট মেথড</label>
-                            <select id="method" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-slate-700 outline-none focus:border-blue-500">
+                            <select id="method" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-3 text-slate-700 outline-none focus:border-blue-500 text-sm">
                                 <option value="বিকাশ">বিকাশ</option>
                                 <option value="নগদ">নগদ</option>
                             </select>
                         </div>
                         <div>
                             <label class="text-slate-500 font-bold block mb-1">উত্তোলন নাম্বার/Binance ID</label>
-                            <input type="text" id="account" placeholder="আপনার ফোন নম্বর বা অ্যাড্রেস লিখুন" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-slate-700 outline-none focus:border-blue-500">
+                            <input type="text" id="account" placeholder="আপনার ফোন নম্বর বা অ্যাড্রেস লিখুন" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-3 text-slate-700 outline-none focus:border-blue-500 text-sm">
                         </div>
                         <div>
                             <label class="text-slate-500 font-bold block mb-1">পরিমাণ (৳)</label>
-                            <input type="number" id="amount" value="1500" readonly class="w-full bg-slate-100 border border-slate-200 rounded-xl px-3 py-2.5 text-slate-400 outline-none cursor-not-allowed font-bold">
+                            <input type="number" id="amount" value="1500" readonly class="w-full bg-slate-100 border border-slate-200 rounded-xl px-3 py-3 text-slate-400 outline-none cursor-not-allowed font-bold text-sm font-mono">
                         </div>
                     </div>
 
-                    <button onclick="handleWithdraw()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl text-sm transition-all shadow-md">
+                    <button onclick="handleWithdraw()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 rounded-xl text-sm transition-all shadow-md">
                         উত্তোলন করুন
                     </button>
                 </div>
@@ -211,31 +213,31 @@
         </main>
 
         <!-- ================= BOTTOM NAVIGATION BAR ================= -->
-        <nav class="absolute bottom-0 left-0 right-0 bg-white border-t border-slate-100 py-2 flex justify-around items-center z-50">
+        <nav class="absolute bottom-0 left-0 right-0 bg-white border-t border-slate-100 py-3 flex justify-around items-center z-50 shadow-[0_-4px_10px_rgba(0,0,0,0.03)]">
             <!-- হোম -->
             <button onclick="switchTab('home')" class="nav-btn text-purple-600 flex flex-col items-center gap-0.5 w-14" data-tab="home">
-                <span class="text-lg">🏠</span>
-                <span class="text-[10px] font-bold">হোম</span>
+                <span class="text-xl">🏠</span>
+                <span class="text-[11px] font-bold">হোম</span>
             </button>
             <!-- কাজ -->
             <button onclick="switchTab('tasks')" class="nav-btn text-slate-400 flex flex-col items-center gap-0.5 w-14" data-tab="tasks">
-                <span class="text-lg">📋</span>
-                <span class="text-[10px] font-bold">কাজ</span>
+                <span class="text-xl">📋</span>
+                <span class="text-[11px] font-bold">কাজ</span>
             </button>
             <!-- সাপোর্ট -->
             <button onclick="switchTab('support')" class="nav-btn text-slate-400 flex flex-col items-center gap-0.5 w-14" data-tab="support">
-                <span class="text-lg">🎧</span>
-                <span class="text-[10px] font-bold">সাপোর্ট</span>
+                <span class="text-xl">🎧</span>
+                <span class="text-[11px] font-bold">সাপোর্ট</span>
             </button>
             <!-- রেফার -->
             <button onclick="switchTab('refer')" class="nav-btn text-slate-400 flex flex-col items-center gap-0.5 w-14" data-tab="refer">
-                <span class="text-lg">👥</span>
-                <span class="text-[10px] font-bold">রেফার</span>
+                <span class="text-xl">👥</span>
+                <span class="text-[11px] font-bold">রেফার</span>
             </button>
             <!-- ওয়ালেট -->
             <button onclick="switchTab('withdraw')" class="nav-btn text-slate-400 flex flex-col items-center gap-0.5 w-14" data-tab="withdraw">
-                <span class="text-lg">💳</span>
-                <span class="text-[10px] font-bold">ওয়ালেট</span>
+                <span class="text-xl">💳</span>
+                <span class="text-[11px] font-bold">ওয়ালেট</span>
             </button>
         </nav>
     </div>
