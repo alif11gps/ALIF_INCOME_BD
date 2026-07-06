@@ -5,25 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ALIF_INCOME_BD - অফিসিয়াল গেমিং প্ল্যাটফর্ম</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Hind Siliguri', sans-serif;
             background-color: #0b121f;
+            color: #ffffff;
             user-select: none;
+            -webkit-tap-highlight-color: transparent;
         }
         .tab-content { display: none; }
         .tab-content.active { display: block; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
+        .gold-glow { text-shadow: 0 0 12px rgba(245, 158, 11, 0.6); }
+        .game-overlay {
+            background-color: rgba(11, 18, 31, 0.95);
+            backdrop-filter: blur(8px);
+        }
+        #aviator-canvas {
+            background-color: #101726;
+            position: relative;
+            overflow: hidden;
+        }
+        .plane {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            font-size: 32px;
+            transition: all 0.1s linear;
+        }
     </style>
 </head>
-<body class="text-slate-200 min-h-screen flex flex-col justify-between max-w-md mx-auto bg-[#0f172a] shadow-2xl relative overflow-hidden">
+<body class="max-w-md mx-auto min-h-screen flex flex-col border-x border-slate-800 shadow-2xl relative">
 
     <!-- ================= APP HEADER ================= -->
     <header class="bg-[#1e293b] border-b border-emerald-500/20 px-4 py-3 flex items-center justify-between sticky top-0 z-50 shadow-md">
         <div class="flex items-center gap-2">
             <span class="text-lg font-black text-emerald-400 tracking-wider">ALIF_INCOME_BD</span>
-            <div class="bg-emerald-500/20 text-emerald-400 text-[10px] px-2 py-0.5 rounded-full font-bold flex items-center gap-1">
+            <div class="bg-emerald-500/20 text-emerald-400 text-[10px] px-2 py-0.5 rounded-full font-bold flex items-center gap-1 animate-pulse">
                 <span>●</span> লাইভ
             </div>
         </div>
@@ -31,11 +52,13 @@
         <!-- User Profile & Balance Area -->
         <div class="flex items-center gap-3">
             <div class="bg-slate-900/80 px-3 py-1.5 rounded-xl border border-slate-700 flex items-center gap-2">
-                <span class="text-yellow-400 text-sm">৳</span>
+                <span class="text-yellow-400 text-sm font-bold">৳</span>
                 <span id="nav-balance" class="font-mono font-bold text-amber-400 text-sm">0.00</span>
             </div>
-            <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-600 flex items-center justify-center font-bold text-white text-xs border border-emerald-400 shadow">
-                MD
+            <div onclick="switchTab('member')" class="cursor-pointer flex items-center gap-1">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-600 flex items-center justify-center font-bold text-white text-xs border border-emerald-400 shadow">
+                    MD
+                </div>
             </div>
         </div>
     </header>
@@ -51,13 +74,13 @@
                 <div class="absolute -right-4 -bottom-4 opacity-20 text-7xl">🎰</div>
                 <span class="bg-amber-500 text-slate-950 font-bold text-[10px] px-2 py-0.5 rounded uppercase tracking-wider">অফার</span>
                 <h2 class="text-lg font-black mt-1 text-white">প্রতিদিন আপনার প্রথম জমায়</h2>
-                <p class="text-xs text-indigo-200 mt-0.5 font-bold text-amber-300">১০০% বোনাস ক্যাশব্যাক উপভোগ করুন!</p>
+                <p class="text-xs mt-0.5 font-bold text-amber-300">১০০% বোনাস ক্যাশব্যাক উপভোগ করুন!</p>
             </div>
 
             <!-- Live Jackpot Ticker -->
             <div class="bg-gradient-to-b from-amber-950/40 to-slate-900 p-3 rounded-2xl border-2 border-amber-500/50 shadow-xl text-center space-y-1.5">
                 <span class="text-[11px] font-bold text-amber-400 tracking-widest uppercase block">🔥 GRAND JACKPOT 🔥</span>
-                <div class="flex justify-center gap-1 font-mono text-2xl font-black text-amber-400 tracking-wider">
+                <div class="flex justify-center gap-1 font-mono text-2xl font-black text-amber-400 tracking-wider gold-glow">
                     <span>৳</span>
                     <span id="jackpot-counter">7,20,81,649</span>
                 </div>
@@ -75,7 +98,7 @@
                 <!-- Game Cards Grid Layout -->
                 <div class="grid grid-cols-2 gap-3 mt-3">
                     <!-- Game 1 -->
-                    <div onclick="playGame('Super Ace')" class="bg-slate-800 border border-slate-700 rounded-2xl overflow-hidden shadow-md cursor-pointer group active:scale-95 transition">
+                    <div onclick="openGame('superace')" class="bg-slate-800 border border-slate-700 rounded-2xl overflow-hidden shadow-md cursor-pointer group active:scale-95 transition">
                         <div class="h-28 bg-gradient-to-br from-red-600 to-amber-600 flex items-center justify-center relative font-black text-2xl tracking-tighter text-white shadow-inner">
                             Super Ace
                             <div class="absolute bottom-2 right-2 bg-black/60 text-[10px] px-1.5 py-0.5 rounded text-amber-400">JILI</div>
@@ -87,7 +110,7 @@
                     </div>
 
                     <!-- Game 2 -->
-                    <div onclick="playGame('Aviator')" class="bg-slate-800 border border-slate-700 rounded-2xl overflow-hidden shadow-md cursor-pointer group active:scale-95 transition">
+                    <div onclick="openGame('aviator')" class="bg-slate-800 border border-slate-700 rounded-2xl overflow-hidden shadow-md cursor-pointer group active:scale-95 transition">
                         <div class="h-28 bg-gradient-to-br from-rose-700 to-purple-900 flex items-center justify-center relative font-black text-2xl tracking-tighter text-white">
                             🚀 Aviator
                             <div class="absolute bottom-2 right-2 bg-black/60 text-[10px] px-1.5 py-0.5 rounded text-rose-400">Spribe</div>
@@ -99,7 +122,7 @@
                     </div>
 
                     <!-- Game 3 -->
-                    <div onclick="playGame('Fortune Gems')" class="bg-slate-800 border border-slate-700 rounded-2xl overflow-hidden shadow-md cursor-pointer group active:scale-95 transition">
+                    <div onclick="openGame('fortunegems')" class="bg-slate-800 border border-slate-700 rounded-2xl overflow-hidden shadow-md cursor-pointer group active:scale-95 transition">
                         <div class="h-28 bg-gradient-to-br from-yellow-600 to-emerald-800 flex items-center justify-center relative font-black text-xl tracking-tighter text-white">
                             Fortune Gems
                         </div>
@@ -110,7 +133,7 @@
                     </div>
 
                     <!-- Game 4 -->
-                    <div onclick="playGame('Crazy Time')" class="bg-slate-800 border border-slate-700 rounded-2xl overflow-hidden shadow-md cursor-pointer group active:scale-95 transition">
+                    <div onclick="openGame('crazytime')" class="bg-slate-800 border border-slate-700 rounded-2xl overflow-hidden shadow-md cursor-pointer group active:scale-95 transition">
                         <div class="h-28 bg-gradient-to-br from-fuchsia-700 to-indigo-900 flex items-center justify-center relative font-black text-xl tracking-tighter text-white">
                             Crazy Time
                         </div>
@@ -203,11 +226,17 @@
         <!-- --- TAB 5: মেম্বার প্রফাইল ও উইথড্র --- -->
         <section id="member" class="tab-content space-y-4">
             <!-- Profile Info Box -->
-            <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700 flex items-center gap-3">
-                <div class="w-12 h-12 rounded-full bg-slate-700 flex items-center justify-center text-xl shadow">👤</div>
-                <div>
-                    <h3 class="font-bold text-white flex items-center gap-1.5 text-sm">alife1 <span class="bg-amber-500 text-slate-950 font-bold text-[9px] px-1.5 py-0.2 rounded">VIP 1</span></h3>
-                    <p class="text-[11px] text-slate-400 font-mono mt-0.5">আইডি: #8493122</p>
+            <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700 flex items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-full bg-slate-700 flex items-center justify-center text-xl shadow">👤</div>
+                    <div>
+                        <h3 class="font-bold text-white flex items-center gap-1.5 text-sm">alife1 <span class="bg-amber-500 text-slate-950 font-bold text-[9px] px-1.5 py-0.2 rounded">VIP 1</span></h3>
+                        <p class="text-[11px] text-slate-400 font-mono mt-0.5">আইডি: #8493122</p>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <span class="text-[10px] text-slate-400 block">মোট ব্যালেন্স</span>
+                    <span id="profile-balance" class="text-base font-bold text-amber-400 font-mono">৳0.00</span>
                 </div>
             </div>
 
@@ -237,69 +266,33 @@
                     উত্তোলন রিকোয়েস্ট পাঠান
                 </button>
             </div>
+
+            <div class="bg-slate-900/60 p-3 rounded-xl border border-dashed border-amber-500/20 text-[11px] text-center text-slate-400">
+                🛡️ অ্যাডমিন ড্যাশবোর্ড মোড সক্রিয়। সমস্ত গেমপ্লে মেকানিজম এবং লাভ-ক্ষতির হার মালিকের কন্ট্রোল প্যানেল দ্বারা নির্ধারিত।
+            </div>
         </section>
 
     </main>
 
-    <!-- ================= BOTTOM NAVIGATION BAR ================= -->
-    <nav class="bg-[#1e293b] border-t border-slate-800 py-2.5 flex justify-around items-center sticky bottom-0 z-50 shadow-xl pb-4">
-        <button onclick="switchTab('home')" class="nav-btn text-emerald-400 flex flex-col items-center gap-1 w-14" data-tab="home">
-            <span class="text-xl">🏠</span>
-            <span class="text-[10px] font-bold">হোম</span>
-        </button>
-        <button onclick="switchTab('promotion')" class="nav-btn text-slate-400 flex flex-col items-center gap-1 w-14" data-tab="promotion">
-            <span class="text-xl">🎁</span>
-            <span class="text-[10px] font-bold">প্রমোশন</span>
-        </button>
-        <button onclick="switchTab('deposit')" class="nav-btn text-slate-400 flex flex-col items-center gap-1 w-14" data-tab="deposit">
-            <span class="text-xl">📥</span>
-            <span class="text-[10px] font-bold">ডিপোজিট</span>
-        </button>
-        <button onclick="switchTab('invite')" class="nav-btn text-slate-400 flex flex-col items-center gap-1 w-14" data-tab="invite">
-            <span class="text-xl">👥</span>
-            <span class="text-[10px] font-bold">ইনভাইট</span>
-        </button>
-        <button onclick="switchTab('member')" class="nav-btn text-slate-400 flex flex-col items-center gap-1 w-14" data-tab="member">
-            <span class="text-xl">👤</span>
-            <span class="text-[10px] font-bold">মেম্বার</span>
-        </button>
-    </nav>
-
-    <!-- ================= SYSTEM LOGIC SCRIPTS ================= -->
-    <script>
-        let balance = 0.00;
-        let selectedDepMethod = 'বিকাশ';
-
-        // Live Tab Switching Setup
-        function switchTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
+    <!-- ================= GAME MODAL INTERACTIVE SYSTEM ================= -->
+    <div id="game-modal" class="game-overlay fixed inset-0 z-50 hidden flex flex-col max-w-md mx-auto">
+        <div class="bg-slate-900 px-4 py-3 flex justify-between items-center border-b border-slate-800">
+            <h3 id="modal-game-title" class="text-sm font-bold text-emerald-400">গেম লোড হচ্ছে...</h3>
+            <button onclick="closeGame()" class="text-white bg-rose-600 hover:bg-rose-700 px-3 py-1 rounded-lg text-xs font-bold transition">গেম থেকে বের হন</button>
+        </div>
+        
+        <div class="flex-1 flex flex-col justify-center items-center p-4">
             
-            document.querySelectorAll('.nav-btn').forEach(btn => {
-                btn.classList.replace('text-emerald-400', 'text-slate-400');
-            });
-            const activeBtn = document.querySelector(`[data-tab="${tabId}"]`);
-            if(activeBtn) activeBtn.classList.replace('text-slate-400', 'text-emerald-400');
-        }
-
-        // Live Jackpot Animation Simulator
-        setInterval(() => {
-            let baseJackpot = 72081649;
-            let randomAdd = Math.floor(Math.random() * 150);
-            let currentJackpot = baseJackpot + randomAdd;
-            document.getElementById('jackpot-counter').innerText = currentJackpot.toLocaleString('en-IN');
-        }, 1500);
-
-        // Deposit Setup Functions
-        function selectMethod(method) {
-            selectedDepMethod = method;
-            const bkashBtn = document.getElementById('btn-bkash');
-            const nagadBtn = document.getElementById('btn-nagad');
-            
-            if(method === 'বিকাশ') {
-                bkashBtn.classList.replace('border-slate-700', 'border-pink-600/80');
-                bkashBtn.classList.add('text-white');
-                nagadBtn.classList.replace('border-orange-500/80', 'border-slate-700');
-            } else {
-                nagadBtn.classList.replace('border-slate-700', 'border-orange-500/80');
-                nagadBtn.clas
+            <!-- AVIATOR GAME ENGINE UI -->
+            <div id="engine-aviator" class="w-full hidden space-y-4">
+                <div id="aviator-canvas" class="w-full h-48 rounded-xl border border-rose-500/30 flex flex-col justify-between p-3">
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-rose-500 font-bold font-mono">Live Multiplier</span>
+                        <span id="aviator-status" class="text-[10px] bg-emerald-600 text-slate-950 px-1.5 py-0.2 rounded font-bold">READY TO FLY</span>
+                    </div>
+                    <div id="aviator-mult" class="text-center text-4xl font-black text-rose-500 font-mono my-auto">1.00x</div>
+                    <div class="text-[10px] text-slate-400 text-center">প্লেনটি ক্র্যাশ (Crash) করার আগে ক্যাশআউট করুন!</div>
+                    <div id="aviator-plane" class="plane">🚀</div>
+                </div>
+                <div class="bg-slate-900 p-3 rounded-xl border border-slate-800 space-y-2.5">
+                    <div class="flex justify-between text-xs text-slat
