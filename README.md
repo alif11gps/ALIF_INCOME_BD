@@ -2,323 +2,304 @@
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>ALIF_INCOME_BO</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALIF_INCOME_BD - অফিসিয়াল গেমিং প্ল্যাটফর্ম</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght=400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Hind Siliguri', sans-serif;
-            background-color: #f8fafc;
+            background-color: #0b121f;
             user-select: none;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
         }
         .tab-content { display: none; }
         .tab-content.active { display: block; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
     </style>
 </head>
-<body class="bg-slate-100 min-h-screen flex justify-center items-stretch">
+<body class="text-slate-200 min-h-screen flex flex-col justify-between max-w-md mx-auto bg-[#0f172a] shadow-2xl relative overflow-hidden">
 
-    <!-- App Container -->
-    <div class="w-full min-h-screen bg-[#f8fafc] text-slate-800 flex flex-col justify-between relative overflow-hidden">
-        
-        <!-- ================= APP HEADER ================= -->
-        <header class="bg-white border-b border-slate-100 px-4 py-4 flex items-center justify-between shrink-0 sticky top-0 z-50 shadow-sm">
-            <div class="flex items-center gap-2">
-                <span class="text-xl font-bold text-slate-800 tracking-wide">ALIF_INCOME_BO 💼</span>
-                <span class="text-blue-600 text-sm">✓</span>
+    <!-- ================= APP HEADER ================= -->
+    <header class="bg-[#1e293b] border-b border-emerald-500/20 px-4 py-3 flex items-center justify-between sticky top-0 z-50 shadow-md">
+        <div class="flex items-center gap-2">
+            <span class="text-lg font-black text-emerald-400 tracking-wider">ALIF_INCOME_BD</span>
+            <div class="bg-emerald-500/20 text-emerald-400 text-[10px] px-2 py-0.5 rounded-full font-bold flex items-center gap-1">
+                <span>●</span> লাইভ
             </div>
-            <button class="text-slate-400 hover:text-slate-600">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
-            </button>
-        </header>
+        </div>
+        
+        <!-- User Profile & Balance Area -->
+        <div class="flex items-center gap-3">
+            <div class="bg-slate-900/80 px-3 py-1.5 rounded-xl border border-slate-700 flex items-center gap-2">
+                <span class="text-yellow-400 text-sm">৳</span>
+                <span id="nav-balance" class="font-mono font-bold text-amber-400 text-sm">0.00</span>
+            </div>
+            <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-600 flex items-center justify-center font-bold text-white text-xs border border-emerald-400 shadow">
+                MD
+            </div>
+        </div>
+    </header>
 
-        <!-- ================= MAIN CONTENT SCROLLABLE ================= -->
-        <main class="flex-1 overflow-y-auto no-scrollbar px-4 py-4 pb-24 space-y-4">
+    <!-- ================= MAIN CONTENT AREA ================= -->
+    <main class="flex-1 overflow-y-auto no-scrollbar px-3 py-4 pb-24 space-y-4">
+        
+        <!-- --- TAB 1: হোম (গেমিং ড্যাশবোর্ড) --- -->
+        <section id="home" class="tab-content active space-y-4">
             
-            <!-- --- TAB 1: হোম --- -->
-            <section id="home" class="tab-content active space-y-4">
-                <div class="flex items-center gap-3 bg-white p-4 rounded-2xl border border-slate-100 shadow-sm">
-                    <div class="w-12 h-12 rounded-full border-2 border-purple-500 overflow-hidden flex items-center justify-center bg-purple-100 text-purple-600 font-bold">
-                        MD
+            <!-- Banner Slider Placeholder -->
+            <div class="bg-gradient-to-r from-purple-900 to-indigo-900 p-4 rounded-2xl border border-indigo-500/30 shadow-lg relative overflow-hidden">
+                <div class="absolute -right-4 -bottom-4 opacity-20 text-7xl">🎰</div>
+                <span class="bg-amber-500 text-slate-950 font-bold text-[10px] px-2 py-0.5 rounded uppercase tracking-wider">অফার</span>
+                <h2 class="text-lg font-black mt-1 text-white">প্রতিদিন আপনার প্রথম জমায়</h2>
+                <p class="text-xs text-indigo-200 mt-0.5 font-bold text-amber-300">১০০% বোনাস ক্যাশব্যাক উপভোগ করুন!</p>
+            </div>
+
+            <!-- Live Jackpot Ticker -->
+            <div class="bg-gradient-to-b from-amber-950/40 to-slate-900 p-3 rounded-2xl border-2 border-amber-500/50 shadow-xl text-center space-y-1.5">
+                <span class="text-[11px] font-bold text-amber-400 tracking-widest uppercase block">🔥 GRAND JACKPOT 🔥</span>
+                <div class="flex justify-center gap-1 font-mono text-2xl font-black text-amber-400 tracking-wider">
+                    <span>৳</span>
+                    <span id="jackpot-counter">7,20,81,649</span>
+                </div>
+            </div>
+
+            <!-- Game Categories Grid -->
+            <div>
+                <div class="flex gap-2 pb-2 overflow-x-auto no-scrollbar text-xs font-bold">
+                    <button class="bg-emerald-500 text-slate-950 px-4 py-2 rounded-xl shrink-0 shadow-md">🔥 জনপ্রিয়</button>
+                    <button class="bg-slate-800 text-slate-400 px-4 py-2 rounded-xl shrink-0 hover:bg-slate-700 transition">🎰 স্লটস</button>
+                    <button class="bg-slate-800 text-slate-400 px-4 py-2 rounded-xl shrink-0 hover:bg-slate-700 transition">🐟 ফিশিং</button>
+                    <button class="bg-slate-800 text-slate-400 px-4 py-2 rounded-xl shrink-0 hover:bg-slate-700 transition">🃏 লাইভ ক্যাসিনো</button>
+                </div>
+
+                <!-- Game Cards Grid Layout -->
+                <div class="grid grid-cols-2 gap-3 mt-3">
+                    <!-- Game 1 -->
+                    <div onclick="playGame('Super Ace')" class="bg-slate-800 border border-slate-700 rounded-2xl overflow-hidden shadow-md cursor-pointer group active:scale-95 transition">
+                        <div class="h-28 bg-gradient-to-br from-red-600 to-amber-600 flex items-center justify-center relative font-black text-2xl tracking-tighter text-white shadow-inner">
+                            Super Ace
+                            <div class="absolute bottom-2 right-2 bg-black/60 text-[10px] px-1.5 py-0.5 rounded text-amber-400">JILI</div>
+                        </div>
+                        <div class="p-2.5 text-center bg-slate-800">
+                            <h4 class="text-xs font-bold text-slate-200 group-hover:text-emerald-400 transition">সুপার এইস</h4>
+                            <span class="text-[10px] text-emerald-400 font-mono">RTP: 97.8%</span>
+                        </div>
                     </div>
-                    <div>
-                        <h3 class="font-bold text-slate-800 flex items-center gap-1">MD <span class="text-purple-600 text-xs">✓</span></h3>
-                        <p class="text-[11px] text-slate-400">মেম্বার আইডি: #00000</p>
+
+                    <!-- Game 2 -->
+                    <div onclick="playGame('Aviator')" class="bg-slate-800 border border-slate-700 rounded-2xl overflow-hidden shadow-md cursor-pointer group active:scale-95 transition">
+                        <div class="h-28 bg-gradient-to-br from-rose-700 to-purple-900 flex items-center justify-center relative font-black text-2xl tracking-tighter text-white">
+                            🚀 Aviator
+                            <div class="absolute bottom-2 right-2 bg-black/60 text-[10px] px-1.5 py-0.5 rounded text-rose-400">Spribe</div>
+                        </div>
+                        <div class="p-2.5 text-center bg-slate-800">
+                            <h4 class="text-xs font-bold text-slate-200 group-hover:text-emerald-400 transition">এভিয়েটর</h4>
+                            <span class="text-[10px] text-rose-400 font-mono">Multi: Up to 100x</span>
+                        </div>
+                    </div>
+
+                    <!-- Game 3 -->
+                    <div onclick="playGame('Fortune Gems')" class="bg-slate-800 border border-slate-700 rounded-2xl overflow-hidden shadow-md cursor-pointer group active:scale-95 transition">
+                        <div class="h-28 bg-gradient-to-br from-yellow-600 to-emerald-800 flex items-center justify-center relative font-black text-xl tracking-tighter text-white">
+                            Fortune Gems
+                        </div>
+                        <div class="p-2.5 text-center bg-slate-800">
+                            <h4 class="text-xs font-bold text-slate-200 group-hover:text-emerald-400 transition">ফরচুন জেমস</h4>
+                            <span class="text-[10px] text-emerald-400 font-mono">RTP: 96.5%</span>
+                        </div>
+                    </div>
+
+                    <!-- Game 4 -->
+                    <div onclick="playGame('Crazy Time')" class="bg-slate-800 border border-slate-700 rounded-2xl overflow-hidden shadow-md cursor-pointer group active:scale-95 transition">
+                        <div class="h-28 bg-gradient-to-br from-fuchsia-700 to-indigo-900 flex items-center justify-center relative font-black text-xl tracking-tighter text-white">
+                            Crazy Time
+                        </div>
+                        <div class="p-2.5 text-center bg-slate-800">
+                            <h4 class="text-xs font-bold text-slate-200 group-hover:text-emerald-400 transition">ক্রেজি টাইম</h4>
+                            <span class="text-[10px] text-purple-400 font-mono">লাইভ শো</span>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <!-- Main Balance Card -->
-                <div class="bg-gradient-to-br from-indigo-500 to-purple-600 rounded-3xl p-6 text-white shadow-md relative overflow-hidden">
-                    <p class="text-xs font-medium text-indigo-100 tracking-wider">মোট ব্যালেন্স</p>
-                    <h1 class="text-5xl font-bold mt-2 flex items-baseline gap-1">
-                        <span class="text-3xl font-medium">৳</span>
-                        <span id="user-balance" class="font-mono">0.00</span>
-                    </h1>
+        <!-- --- TAB 2: প্রমোশন --- -->
+        <section id="promotion" class="tab-content space-y-4">
+            <h2 class="text-lg font-bold text-emerald-400">🎁 বোনাস ও প্রমোশন</h2>
+            
+            <div class="bg-slate-800 border border-slate-700 p-4 rounded-2xl space-y-3 shadow">
+                <div class="bg-emerald-500 text-slate-950 font-bold text-[11px] px-2.5 py-0.5 rounded-full inline-block">নতুন মেম্বার</div>
+                <h3 class="text-sm font-bold text-white">প্রথম ডিপোজিটে ১০০% ওয়েলকাম বোনাস!</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">সর্বনিম্ন ৳৫০০ ডিপোজিট করে আপনার ব্যালেন্স দ্বিগুণ করে নিন। জয়ের সুযোগ আরও বেশি!</p>
+            </div>
+
+            <div class="bg-slate-800 border border-slate-700 p-4 rounded-2xl space-y-3 shadow">
+                <div class="bg-amber-500 text-slate-950 font-bold text-[11px] px-2.5 py-0.5 rounded-full inline-block">প্রতিদিনের রিওয়ার্ড</div>
+                <h3 class="text-sm font-bold text-white">ডেইলি সাইন-ইন লাকি ড্র</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">প্রতিদিন লগইন করুন এবং জিতে নিন একটি আইফোন ১৭ প্রো ম্যাক্স জেতার আকর্ষণীয় সুযোগ!</p>
+            </div>
+        </section>
+
+        <!-- --- TAB 3: ডিপোজিট --- -->
+        <section id="deposit" class="tab-content space-y-4">
+            <div class="bg-slate-800 border border-slate-700 p-5 rounded-2xl space-y-4 shadow-xl">
+                <div>
+                    <h2 class="text-base font-bold text-emerald-400">📥 অ্যাকাউন্ট রিচার্জ করুন</h2>
+                    <p class="text-[11px] text-slate-400 mt-0.5">১ মিনিটের মধ্যে নিরাপদ ও দ্রুত ডিপোজিট সম্পন্ন করুন</p>
                 </div>
 
-                <!-- Info Notice Slider Ticker -->
-                <div class="bg-white border border-slate-100 p-3 rounded-xl text-xs text-slate-600 flex items-center gap-2 overflow-hidden shadow-sm">
-                    <span class="shrink-0">🎉</span>
-                    <marquee class="font-medium" scrollamount="4">Alif*** সবেমাত্র ৳১৫০০ উত্তোলন করেছেন! নতুন কাজের আপডেট পেতে আমাদের সাথে থাকুন।</marquee>
-                </div>
-
-                <!-- Dashboard Statistics Grid Layout -->
+                <!-- Payment Methods Selector -->
                 <div class="grid grid-cols-2 gap-3">
-                    <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm">
-                        <div class="text-purple-500 mb-2">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                        </div>
-                        <div class="text-slate-400 font-medium text-xs">মোট টাস্ক</div>
-                        <span id="stat-tasks" class="text-2xl font-bold text-slate-800 mt-1 block font-mono">0</span>
-                    </div>
-                    
-                    <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm">
-                        <div class="text-blue-500 mb-2">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-                        </div>
-                        <div class="text-slate-400 font-medium text-xs">মোট রেফার</div>
-                        <span id="stat-refers" class="text-2xl font-bold text-slate-800 mt-1 block font-mono">0</span>
-                    </div>
+                    <button onclick="selectMethod('বিকাশ')" id="btn-bkash" class="bg-slate-900 border-2 border-pink-600/80 p-3 rounded-xl flex items-center justify-center gap-2 font-bold text-sm text-white transition shadow-sm">
+                        <span>💗</span> বিকাশ (Bkash)
+                    </button>
+                    <button onclick="selectMethod('নগদ')" id="btn-nagad" class="bg-slate-900 border-2 border-slate-700 p-3 rounded-xl flex items-center justify-center gap-2 font-bold text-sm text-slate-300 transition shadow-sm">
+                        <span>🧡</span> নগদ (Nagad)
+                    </button>
+                </div>
 
-                    <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm">
-                        <div class="text-indigo-500 mb-2">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                        </div>
-                        <div class="text-slate-400 font-medium text-xs">বিজ্ঞাপন দেখা</div>
-                        <span id="stat-total-ads" class="text-2xl font-bold text-slate-800 mt-1 block font-mono">0</span>
-                    </div>
-
-                    <div class="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm">
-                        <div class="text-emerald-500 mb-2">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        </div>
-                        <div class="text-slate-400 font-medium text-xs">কোনাস ব্যালেন্স</div>
-                        <span id="stat-refer-bonus" class="text-2xl font-bold text-slate-800 mt-1 block font-mono">৳0.00</span>
+                <!-- Fast Amount Selection -->
+                <div class="space-y-2">
+                    <label class="text-xs font-bold text-slate-400">টাকার পরিমাণ নির্বাচন করুন:</label>
+                    <div class="grid grid-cols-4 gap-2 text-xs font-bold">
+                        <button onclick="setAmount(300)" class="bg-slate-900 hover:bg-slate-700 border border-slate-700 p-2.5 rounded-lg transition text-slate-200">৳৩০০</button>
+                        <button onclick="setAmount(500)" class="bg-slate-900 hover:bg-slate-700 border border-slate-700 p-2.5 rounded-lg transition text-slate-200">৳৫০০</button>
+                        <button onclick="setAmount(1000)" class="bg-slate-900 hover:bg-slate-700 border border-slate-700 p-2.5 rounded-lg transition text-slate-200">৳১,০০০</button>
+                        <button onclick="setAmount(5000)" class="bg-slate-900 hover:bg-slate-700 border border-slate-700 p-2.5 rounded-lg transition text-slate-200">৳৫,০০০</button>
                     </div>
                 </div>
-            </section>
 
-            <!-- --- TAB 2: কাজ --- -->
-            <section id="tasks" class="tab-content space-y-4">
-                <div class="bg-white border border-slate-100 p-6 rounded-3xl text-center shadow-sm space-y-5">
+                <!-- Custom Amount Input -->
+                <div class="space-y-1.5">
+                    <label class="text-xs font-bold text-slate-400">ডিপোজিট পরিমাণ লিখুন (৳):</label>
+                    <input type="number" id="dep-amount" placeholder="৳৩০০ - ৳৫০,০০০" class="w-full bg-slate-900 border border-slate-700 text-amber-400 font-mono font-bold rounded-xl px-3 py-3 outline-none focus:border-emerald-500 text-sm">
+                </div>
+
+                <!-- Transaction Reference Input -->
+                <div class="space-y-1.5">
+                    <label class="text-xs font-bold text-slate-400">যে নম্বর থেকে টাকা পাঠিয়েছেন:</label>
+                    <input type="text" id="dep-phone" placeholder="আপনার বিকাশ/নগদ নাম্বার দিন" class="w-full bg-slate-900 border border-slate-700 text-slate-200 font-bold rounded-xl px-3 py-3 outline-none focus:border-emerald-500 text-sm">
+                </div>
+
+                <button onclick="processDeposit()" class="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 font-bold text-slate-950 py-3.5 rounded-xl text-sm shadow-md transition transform active:scale-95">
+                    ডিপোজিট রিকোয়েস্ট পাঠান
+                </button>
+            </div>
+        </section>
+
+        <!-- --- TAB 4: ইনভাইট --- -->
+        <section id="invite" class="tab-content space-y-4">
+            <div class="bg-slate-800 border border-slate-700 p-5 rounded-2xl space-y-4 shadow-lg">
+                <h2 class="text-base font-bold text-emerald-400 flex items-center gap-2">👥 বন্ধুদের আমন্ত্রণ জানান</h2>
+                <p class="text-xs text-slate-400 leading-relaxed">আপনার ইনভাইট লিংক শেয়ার করুন। আপনার রেফার করা বন্ধু প্রথম ডিপোজিট করলেই আপনি পাবেন সাথে সাথে <span class="text-emerald-400 font-bold">৳১০০ বোনাস</span>!</p>
+                
+                <div class="bg-slate-900 p-3.5 rounded-xl border border-slate-700 flex justify-between items-center gap-2">
+                    <span class="text-xs font-mono text-emerald-400 select-all overflow-hidden truncate">http://alifincomebd.com/reg?ref=alife1</span>
+                    <button onclick="alert('ইনভাইট লিংক কপি হয়েছে!')" class="p-2 bg-emerald-500 text-slate-950 rounded-lg text-xs font-bold tracking-wide shadow transition shrink-0 active:scale-95">কপি</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- --- TAB 5: মেম্বার প্রফাইল ও উইথড্র --- -->
+        <section id="member" class="tab-content space-y-4">
+            <!-- Profile Info Box -->
+            <div class="bg-slate-800 p-4 rounded-2xl border border-slate-700 flex items-center gap-3">
+                <div class="w-12 h-12 rounded-full bg-slate-700 flex items-center justify-center text-xl shadow">👤</div>
+                <div>
+                    <h3 class="font-bold text-white flex items-center gap-1.5 text-sm">alife1 <span class="bg-amber-500 text-slate-950 font-bold text-[9px] px-1.5 py-0.2 rounded">VIP 1</span></h3>
+                    <p class="text-[11px] text-slate-400 font-mono mt-0.5">আইডি: #8493122</p>
+                </div>
+            </div>
+
+            <!-- Withdrawal Box -->
+            <div class="bg-slate-800 border border-slate-700 p-5 rounded-2xl space-y-4 shadow-lg">
+                <h2 class="text-base font-bold text-rose-400">📤 ব্যালেন্স উত্তোলন (Withdraw)</h2>
+                
+                <div class="space-y-3 text-xs">
                     <div>
-                        <h2 class="text-lg font-bold text-slate-800">বিজ্ঞাপন দেখুন</h2>
-                        <p class="text-xs text-slate-400 mt-1">প্রতি বিজ্ঞাপন দেখে ৳১০.০০ ইনকাম করুন</p>
+                        <label class="text-slate-400 font-bold block mb-1">পেমেন্ট গেটওয়ে</label>
+                        <select id="withdraw-method" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-3 text-slate-200 font-bold outline-none focus:border-rose-500 text-sm">
+                            <option value="বিকাশ">বিকাশ (Bkash)</option>
+                            <option value="নগদ">নগদ (Nagad)</option>
+                        </select>
                     </div>
-                    
-                    <div class="inline-flex bg-blue-50 text-blue-600 font-bold px-5 py-2 rounded-full text-sm border border-blue-100 items-center gap-1">
-                        💵 রিওয়ার্ড: ৳১০.০০টাকা
+                    <div>
+                        <label class="text-slate-400 font-bold block mb-1">উত্তোলন করার নাম্বার</label>
+                        <input type="text" id="withdraw-account" placeholder="আপনার পার্সোনাল নম্বরটি দিন" class="w-full bg-slate-900 border border-slate-700 text-slate-200 font-bold rounded-xl px-3 py-3 outline-none focus:border-rose-500 text-sm">
                     </div>
-                    
-                    <div class="space-y-2 pt-2 text-left">
-                        <div class="flex justify-between text-xs text-slate-500 px-1">
-                            <span>আজকের সম্পন্ন</span>
-                            <span id="task-count-txt" class="font-bold text-slate-700 font-mono">0 / 20</span>
-                        </div>
-                        <div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
-                            <div id="task-progress" class="bg-red-500 h-full w-0 rounded-full transition-all duration-300"></div>
-                        </div>
-                    </div>
-
-                    <button onclick="watchVideoTask()" class="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-3.5 rounded-xl text-sm shadow-md transition-all">
-                        বিজ্ঞাপন দেখুন
-                    </button>
-                </div>
-            </section>
-
-            <!-- --- TAB 3: সাপোর্ট --- -->
-            <section id="support" class="tab-content space-y-4">
-                <div class="bg-white border border-slate-100 p-6 rounded-3xl text-center shadow-sm space-y-5">
-                    <h2 class="text-base font-bold text-slate-800 text-left">সাহায্য প্রয়োজন?</h2>
-                    
-                    <div class="bg-red-500 text-white p-6 rounded-2xl space-y-4 shadow-sm">
-                        <div class="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center mx-auto text-2xl">✈️</div>
-                        <h3 class="font-bold text-lg">কাস্টমার সাপোর্ট</h3>
-                        <p class="text-xs text-red-100 leading-relaxed">যেকোনো সমস্যা সমাধানের জন্য আমাদের সাথে যোগাযোগ করুন</p>
-                        
-                        <a href="https://t.me/Suupport7" target="_blank" class="inline-block bg-white/20 hover:bg-white/30 text-white font-medium text-sm px-8 py-3 rounded-full transition-all">
-                            @Suupport7
-                        </a>
+                    <div>
+                        <label class="text-slate-400 font-bold block mb-1">উত্তোলনের পরিমাণ (৳)</label>
+                        <input type="number" id="withdraw-amount" placeholder="সর্বনিম্ন ৳৫০০" class="w-full bg-slate-900 border border-slate-700 text-amber-400 font-bold font-mono rounded-xl px-3 py-3 outline-none focus:border-rose-500 text-sm">
                     </div>
                 </div>
-            </section>
 
-            <!-- --- TAB 4: রেফার (সবুজ রঙ ও বড় সাইজে আপডেট করা হয়েছে) --- -->
-            <section id="refer" class="tab-content space-y-4">
-                <div class="bg-[#111827] text-slate-100 p-6 rounded-3xl space-y-5 shadow-lg border border-emerald-500/20">
-                    <h2 class="text-base font-bold flex items-center gap-2 text-emerald-400">🎁 বন্ধুকে রেফার করুন এবং আয় করুন</h2>
-                    <p class="text-xs text-slate-400 leading-relaxed">আপনার রেফার লিংকটি শেয়ার করুন এবং আপনার বন্ধুদের আমন্ত্রণ করুন। আপনার বন্ধু সাইন আপ করলে আপনি ৳৫০.০০ বোনাস পাবেন।</p>
-                    
-                    <div class="bg-emerald-950/80 text-xs py-3 px-4 rounded-xl text-emerald-300 font-semibold inline-block border border-emerald-500/30 shadow-inner">
-                        😊 প্রতি রেফারে ৳৫০.০০ টাকা বোনাস
-                    </div>
+                <button onclick="processWithdraw()" class="w-full bg-gradient-to-r from-rose-500 to-red-600 hover:from-rose-600 hover:to-red-700 font-bold text-white py-3.5 rounded-xl text-sm shadow-md transition transform active:scale-95">
+                    উত্তোলন রিকোয়েস্ট পাঠান
+                </button>
+            </div>
+        </section>
 
-                    <!-- বড় এবং সবুজ কালার ইনপুট বক্স -->
-                    <div class="bg-slate-900 p-4 rounded-2xl flex flex-col gap-3 border-2 border-emerald-500 shadow-md bg-gradient-to-b from-slate-900 to-emerald-950/40">
-                        <span class="text-[11px] uppercase tracking-wider font-bold text-emerald-400/80 px-1">আপনার রেফারেল লিঙ্ক:</span>
-                        <div class="flex items-center justify-between gap-2 bg-black/40 p-2.5 rounded-xl border border-emerald-500/30">
-                            <input type="text" id="ref-link" readonly value="https://t.me/ALIF_INCOME_BO_Bot?start=user" class="bg-transparent text-sm text-emerald-300 font-bold outline-none flex-1 font-mono tracking-wide selection:bg-emerald-500/30">
-                            <button onclick="copyLink()" class="p-2.5 bg-emerald-500 hover:bg-emerald-600 rounded-xl text-white text-sm transition-all shadow-md active:scale-95">📋</button>
-                        </div>
-                    </div>
+    </main>
 
-                    <div class="grid grid-cols-2 gap-3 pt-1">
-                        <button onclick="copyLink()" class="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 font-bold text-xs py-3.5 rounded-xl transition-all shadow-md active:scale-95 text-white">লিংক কপি করুন</button>
-                        <button onclick="simulateReferral()" class="bg-slate-800 hover:bg-slate-700 font-bold text-xs py-3.5 rounded-xl transition-all border border-slate-700 active:scale-95 text-slate-200">➕ ডেমো রেফার</button>
-                    </div>
-                </div>
-            </section>
-
-            <!-- --- TAB 5: ওয়ালেট --- -->
-            <section id="withdraw" class="tab-content space-y-4">
-                <div class="bg-white border border-slate-200 p-6 rounded-3xl space-y-5 shadow-sm">
-                    
-                    <!-- Withdrawal Conditions Box -->
-                    <div class="bg-blue-50 border border-blue-100 p-4 rounded-xl space-y-2 text-xs">
-                        <h4 class="font-bold text-blue-700 flex items-center gap-1">⚠️ উত্তোলনের শর্তাবলী</h4>
-                        <p class="text-slate-600">উত্তোলনের জন্য নিচের শর্তটি পূরণ করতে হবে:</p>
-                        <ul class="space-y-1 text-slate-600 font-medium">
-                            <li>• অন্তত <span class="text-blue-700 font-bold">১৫০টি</span> বিজ্ঞাপন দেখতে হবে।</li>
-                            <li class="bg-white/60 p-2 rounded mt-1 flex justify-between items-center">
-                                <span>আপনার বর্তমান সম্পন্ন:</span>
-                                <span id="cond-ads" class="text-emerald-600 font-bold font-mono">0 / 150</span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Withdrawal Fields -->
-                    <div class="space-y-4 text-xs">
-                        <div>
-                            <label class="text-slate-500 font-bold block mb-1">পেমেন্ট মেথড</label>
-                            <select id="method" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-3 text-slate-700 outline-none focus:border-blue-500 text-sm">
-                                <option value="বিকাশ">বিকাশ</option>
-                                <option value="নগদ">নগদ</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="text-slate-500 font-bold block mb-1">উত্তোলন নাম্বার/Binance ID</label>
-                            <input type="text" id="account" placeholder="আপনার ফোন নম্বর বা অ্যাড্রেস লিখুন" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-3 text-slate-700 outline-none focus:border-blue-500 text-sm">
-                        </div>
-                        <div>
-                            <label class="text-slate-500 font-bold block mb-1">পরিমাণ (৳)</label>
-                            <input type="number" id="amount" value="1500" readonly class="w-full bg-slate-100 border border-slate-200 rounded-xl px-3 py-3 text-slate-400 outline-none cursor-not-allowed font-bold text-sm font-mono">
-                        </div>
-                    </div>
-
-                    <button onclick="handleWithdraw()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 rounded-xl text-sm transition-all shadow-md">
-                        উত্তোলন করুন
-                    </button>
-                </div>
-            </section>
-
-        </main>
-
-        <!-- ================= BOTTOM NAVIGATION BAR ================= -->
-        <nav class="bg-white border-t border-slate-100 py-3 flex justify-around items-center z-50 shadow-[0_-4px_10px_rgba(0,0,0,0.03)] pb-5">
-            <button onclick="switchTab('home')" class="nav-btn text-purple-600 flex flex-col items-center gap-0.5 w-14" data-tab="home">
-                <span class="text-xl">🏠</span>
-                <span class="text-[11px] font-bold">হোম</span>
-            </button>
-            <button onclick="switchTab('tasks')" class="nav-btn text-slate-400 flex flex-col items-center gap-0.5 w-14" data-tab="tasks">
-                <span class="text-xl">📋</span>
-                <span class="text-[11px] font-bold">কাজ</span>
-            </button>
-            <button onclick="switchTab('support')" class="nav-btn text-slate-400 flex flex-col items-center gap-0.5 w-14" data-tab="support">
-                <span class="text-xl">🎧</span>
-                <span class="text-[11px] font-bold">সাপোর্ট</span>
-            </button>
-            <button onclick="switchTab('refer')" class="nav-btn text-slate-400 flex flex-col items-center gap-0.5 w-14" data-tab="refer">
-                <span class="text-xl">👥</span>
-                <span class="text-[11px] font-bold">রেফার</span>
-            </button>
-            <button onclick="switchTab('withdraw')" class="nav-btn text-slate-400 flex flex-col items-center gap-0.5 w-14" data-tab="withdraw">
-                <span class="text-xl">💳</span>
-                <span class="text-[11px] font-bold">ওয়ালেট</span>
-            </button>
-        </nav>
-    </div>
+    <!-- ================= BOTTOM NAVIGATION BAR ================= -->
+    <nav class="bg-[#1e293b] border-t border-slate-800 py-2.5 flex justify-around items-center sticky bottom-0 z-50 shadow-xl pb-4">
+        <button onclick="switchTab('home')" class="nav-btn text-emerald-400 flex flex-col items-center gap-1 w-14" data-tab="home">
+            <span class="text-xl">🏠</span>
+            <span class="text-[10px] font-bold">হোম</span>
+        </button>
+        <button onclick="switchTab('promotion')" class="nav-btn text-slate-400 flex flex-col items-center gap-1 w-14" data-tab="promotion">
+            <span class="text-xl">🎁</span>
+            <span class="text-[10px] font-bold">প্রমোশন</span>
+        </button>
+        <button onclick="switchTab('deposit')" class="nav-btn text-slate-400 flex flex-col items-center gap-1 w-14" data-tab="deposit">
+            <span class="text-xl">📥</span>
+            <span class="text-[10px] font-bold">ডিপোজিট</span>
+        </button>
+        <button onclick="switchTab('invite')" class="nav-btn text-slate-400 flex flex-col items-center gap-1 w-14" data-tab="invite">
+            <span class="text-xl">👥</span>
+            <span class="text-[10px] font-bold">ইনভাইট</span>
+        </button>
+        <button onclick="switchTab('member')" class="nav-btn text-slate-400 flex flex-col items-center gap-1 w-14" data-tab="member">
+            <span class="text-xl">👤</span>
+            <span class="text-[10px] font-bold">মেম্বার</span>
+        </button>
+    </nav>
 
     <!-- ================= SYSTEM LOGIC SCRIPTS ================= -->
     <script>
-        let balance = 0.00; 
-        let todayTasks = 0;
-        let totalRefers = 0;
-        let totalAdsWatched = 0;
-        let referBonus = 0.00;
-        const maxDailyTasks = 20;
+        let balance = 0.00;
+        let selectedDepMethod = 'বিকাশ';
 
+        // Live Tab Switching Setup
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
             
             document.querySelectorAll('.nav-btn').forEach(btn => {
-                btn.classList.replace('text-purple-600', 'text-slate-400');
+                btn.classList.replace('text-emerald-400', 'text-slate-400');
             });
             const activeBtn = document.querySelector(`[data-tab="${tabId}"]`);
-            if(activeBtn) activeBtn.classList.replace('text-slate-400', 'text-purple-600');
+            if(activeBtn) activeBtn.classList.replace('text-slate-400', 'text-emerald-400');
         }
 
-        function updateUI() {
-            document.getElementById('user-balance').innerText = balance.toFixed(2);
-            document.getElementById('stat-tasks').innerText = todayTasks;
-            document.getElementById('stat-refers').innerText = totalRefers;
-            document.getElementById('stat-total-ads').innerText = totalAdsWatched;
-            document.getElementById('stat-refer-bonus').innerText = `৳${referBonus.toFixed(2)}`;
+        // Live Jackpot Animation Simulator
+        setInterval(() => {
+            let baseJackpot = 72081649;
+            let randomAdd = Math.floor(Math.random() * 150);
+            let currentJackpot = baseJackpot + randomAdd;
+            document.getElementById('jackpot-counter').innerText = currentJackpot.toLocaleString('en-IN');
+        }, 1500);
+
+        // Deposit Setup Functions
+        function selectMethod(method) {
+            selectedDepMethod = method;
+            const bkashBtn = document.getElementById('btn-bkash');
+            const nagadBtn = document.getElementById('btn-nagad');
             
-            document.getElementById('cond-ads').innerText = `${totalAdsWatched} / 150`; 
-            document.getElementById('task-count-txt').innerText = `${todayTasks} / ${maxDailyTasks}`;
-        }
-
-        function watchVideoTask() {
-            if(todayTasks >= maxDailyTasks) {
-                alert("আজকের লিমিট (২০/২০) শেষ হয়েছে!");
-                return;
-            }
-            alert("বিজ্ঞাপন লোড হচ্ছে... ৫ সেকেন্ড অপেক্ষা করুন।");
-            setTimeout(() => {
-                balance += 10.00; 
-                todayTasks++;
-                totalAdsWatched++;
-                document.getElementById('task-progress').style.width = `${(todayTasks / maxDailyTasks) * 100}%`;
-                updateUI();
-                alert("সফলভাবে ভিডিও দেখা সম্পন্ন! ওয়ালেটে ৳১০ যোগ হয়েছে।");
-            }, 1000);
-        }
-
-        function simulateReferral() {
-            balance += 50.00; 
-            referBonus += 50.00;
-            totalRefers++;
-            updateUI();
-            alert("১টি রেফার সফল হয়েছে! ৳৫০ বোনাস দেওয়া হয়েছে।");
-        }
-
-        function copyLink() {
-            const input = document.getElementById('ref-link');
-            input.select();
-            document.execCommand('copy');
-            alert("রেফারেল লিংক কপি হয়েছে!");
-        }
-
-        function handleWithdraw() {
-            const account = document.getElementById('account').value;
-            const amount = 1500; 
-            
-            if(!account) {
-                alert("আপনার অ্যাকাউন্ট নম্বরটি লিখুন!");
-                return;
-            }
-            if(balance < amount) {
-                alert("উত্তোলনের জন্য আপনার একাউন্টে ন্যূনতম ৳১৫০০ টাকা থাকতে হবে।");
-                return;
-            }
-            if(totalAdsWatched < 150) {
-                alert(`শর্ত অপূর্ণ! উত্তোলন করার আগে আপনাকে কমপক্ষে ১৫০টি বিজ্ঞাপন দেখতে হবে। (আপনার বর্তমান দেখা: ${totalAdsWatched}টি)`);
-                return;
-            }
-            
-            balance -= am
+            if(method === 'বিকাশ') {
+                bkashBtn.classList.replace('border-slate-700', 'border-pink-600/80');
+                bkashBtn.classList.add('text-white');
+                nagadBtn.classList.replace('border-orange-500/80', 'border-slate-700');
+            } else {
+                nagadBtn.classList.replace('border-slate-700', 'border-orange-500/80');
+                nagadBtn.clas
