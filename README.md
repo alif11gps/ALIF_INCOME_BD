@@ -16,9 +16,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            min-h: 100vh;
             margin: 0;
-            overflow: hidden;
         }
         /* মোবাইল স্ক্রিন সাইজ লক করার জন্য ফিক্সড কন্টেইনার */
         .app-container {
@@ -160,52 +159,9 @@
                         😊 প্রতি রেফারে ৳৫০.০০ TAKA বোনাস
                     </div>
 
-                    <!-- 🔗 ছোট করা ইনভাইট লিংক সেকশন -->
                     <div class="bg-slate-800 p-3 rounded-xl border border-slate-700 flex justify-between items-center gap-2">
-                        <span class="text-xs font-mono text-slate-300 overflow-hidden truncate">t.me/AlifIncomeBdBot?start=ref</span>
+                        <span class="text-xs font-mono text-slate-300 overflow-hidden truncate">https://t.me/AlifIncomeBdBot?start=ref</span>
                         <button onclick="alert('লিংক কপি হয়েছে!')" class="p-2 bg-fuchsia-600 text-white rounded-lg text-xs font-bold shrink-0">📋</button>
-                    </div>
-                </div>
-
-                <!-- 👥 আমন্ত্রিত বন্ধুদের লাইভ হিস্টরি ও কাজের স্ট্যাটাস -->
-                <div class="bg-white border border-slate-200 rounded-2xl p-4 shadow-sm space-y-3">
-                    <div class="flex justify-between items-center border-b border-slate-100 pb-2">
-                        <div>
-                            <h4 class="text-xs font-bold text-slate-800 uppercase tracking-wider">👥 আমন্ত্রিত বন্ধুদের তালিকা</h4>
-                            <p class="text-[10px] text-slate-400">কারা জয়েন করেছে ও কাজ করছে দেখুন</p>
-                        </div>
-                        <span class="bg-indigo-50 text-indigo-600 text-xs font-bold px-2.5 py-1 rounded-full">মোট: ২ জন</span>
-                    </div>
-
-                    <!-- মেম্বার লিস্ট -->
-                    <div class="space-y-2">
-                        <div class="flex items-center justify-between p-2.5 bg-slate-50 border border-slate-100 rounded-xl">
-                            <div class="flex items-center gap-2.5">
-                                <div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-xs font-bold text-emerald-700">RA</div>
-                                <div>
-                                    <h5 class="text-xs font-bold text-slate-700">Rakib Ahmed</h5>
-                                    <p class="text-[10px] text-slate-400">আইডি: #584920</p>
-                                </div>
-                            </div>
-                            <div class="text-right">
-                                <span class="bg-emerald-100 text-emerald-700 text-[9px] font-bold px-2 py-0.5 rounded-full block text-center mb-1">কাজ করতেছে (Active)</span>
-                                <p class="text-[9px] text-slate-400">টাস্ক সম্পন্ন: ১২টি</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center justify-between p-2.5 bg-slate-50 border border-slate-100 rounded-xl">
-                            <div class="flex items-center gap-2.5">
-                                <div class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center text-xs font-bold text-amber-700">SI</div>
-                                <div>
-                                    <h5 class="text-xs font-bold text-slate-700">Sabbir Islam</h5>
-                                    <p class="text-[10px] text-slate-400">আইডি: #584115</p>
-                                </div>
-                            </div>
-                            <div class="text-right">
-                                <span class="bg-amber-100 text-amber-700 text-[9px] font-bold px-2 py-0.5 rounded-full block text-center mb-1">বাকি আছে (Pending)</span>
-                                <p class="text-[9px] text-slate-400">টাস্ক সম্পন্ন: ০টি</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </section>
