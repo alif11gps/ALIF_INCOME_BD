@@ -112,7 +112,7 @@
                         <div class="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center text-lg font-bold">👥</div>
                         <div>
                             <span class="text-[11px] text-slate-400 block font-semibold">সফল রেফার</span>
-                            <span class="text-base font-bold text-slate-800">2 / 20</span>
+                            <span class="text-base font-bold text-slate-800">0 / 20</span>
                         </div>
                     </div>
                 </div>
@@ -120,14 +120,6 @@
                 <button onclick="switchTab('tasks')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3.5 rounded-2xl shadow-sm transition">
                     টাস্ক ওয়ার্ক শুরু করুন
                 </button>
-
-                <!-- 🌐 নতুন সংযুক্ত: কোম্পানি পরিচিতি সেকশন -->
-                <div class="bg-white border border-slate-100 p-4 rounded-2xl shadow-sm space-y-2.5">
-                    <h4 class="text-xs font-bold text-slate-800 uppercase tracking-wider flex items-center gap-1">🏢 আমাদের কোম্পানি পরিচিতি</h4>
-                    <p class="text-xs text-slate-600 leading-relaxed">
-                        <strong class="text-indigo-600">ALIF_INCOME_BD</strong> হলো একটি আধুনিক **ডিজিটাল অ্যাডভার্টাইজিং এবং মাইক্রো-টাস্কিং প্ল্যাটফর্ম**। আমরা বিশ্বের বিভিন্ন নামী-দামী ব্র্যান্ডের বিজ্ঞাপন প্রচার ও প্রোমোশনের কাজ করে থাকি। আমাদের ব্যবহারকারীরা এখানে সহজ কিছু ডিজিটাল টাস্ক (যেমন: বিজ্ঞাপন দেখা, রেফার করা) সম্পন্ন করে ঘরে বসেই পার্ট-টাইম ইনকাম করতে পারেন।
-                    </p>
-                </div>
             </section>
 
             <!-- --- TAB 2: ভিডিও কাজ (Tasks) --- -->
@@ -156,7 +148,7 @@
                 </div>
             </section>
 
-            <!-- --- TAB 3: রেফার ও লাইভ হিস্টরি (Invite & Live History) --- -->
+            <!-- --- TAB 3: রেফার (Invite) --- -->
             <section id="invite" class="tab-content space-y-4">
                 <div class="bg-slate-900 text-white p-5 rounded-3xl space-y-4 shadow-lg">
                     <div class="space-y-1.5">
@@ -168,25 +160,25 @@
                         😊 প্রতি রেফারে ৳৫০.০০ TAKA বোনাস
                     </div>
 
+                    <!-- 🔗 ছোট করা ইনভাইট লিংক সেকশন -->
                     <div class="bg-slate-800 p-3 rounded-xl border border-slate-700 flex justify-between items-center gap-2">
-                        <span class="text-xs font-mono text-slate-300 overflow-hidden truncate">https://t.me/AlifIncomeBdBot?start=ref</span>
+                        <span class="text-xs font-mono text-slate-300 overflow-hidden truncate">t.me/AlifIncomeBdBot?start=ref</span>
                         <button onclick="alert('লিংক কপি হয়েছে!')" class="p-2 bg-fuchsia-600 text-white rounded-lg text-xs font-bold shrink-0">📋</button>
                     </div>
                 </div>
 
-                <!-- 👥 নতুন সংযুক্ত: আমন্ত্রিত বন্ধুদের লাইভ হিস্টরি ও কাজের অগ্রগতি -->
+                <!-- 👥 আমন্ত্রিত বন্ধুদের লাইভ হিস্টরি ও কাজের স্ট্যাটাস -->
                 <div class="bg-white border border-slate-200 rounded-2xl p-4 shadow-sm space-y-3">
                     <div class="flex justify-between items-center border-b border-slate-100 pb-2">
                         <div>
-                            <h4 class="text-xs font-bold text-slate-800 uppercase tracking-wider">📊 আমন্ত্রিত মেম্বারদের কাজের হিস্টরি</h4>
-                            <p class="text-[10px] text-slate-400">কারা যুক্ত হয়েছে এবং বর্তমানে কাজ করছে</p>
+                            <h4 class="text-xs font-bold text-slate-800 uppercase tracking-wider">👥 আমন্ত্রিত বন্ধুদের তালিকা</h4>
+                            <p class="text-[10px] text-slate-400">কারা জয়েন করেছে ও কাজ করছে দেখুন</p>
                         </div>
                         <span class="bg-indigo-50 text-indigo-600 text-xs font-bold px-2.5 py-1 rounded-full">মোট: ২ জন</span>
                     </div>
 
-                    <!-- লাইভ হিস্টরি লিস্ট -->
+                    <!-- মেম্বার লিস্ট -->
                     <div class="space-y-2">
-                        <!-- মেম্বার ১ (অ্যাক্টিভ) -->
                         <div class="flex items-center justify-between p-2.5 bg-slate-50 border border-slate-100 rounded-xl">
                             <div class="flex items-center gap-2.5">
                                 <div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-xs font-bold text-emerald-700">RA</div>
@@ -196,12 +188,11 @@
                                 </div>
                             </div>
                             <div class="text-right">
-                                <span class="bg-emerald-100 text-emerald-700 text-[9px] font-bold px-2 py-0.5 rounded-full block text-center mb-1">কাজ করতেছে</span>
-                                <p class="text-[9px] text-slate-500">টাস্ক সম্পন্ন: ১৫/১৫</p>
+                                <span class="bg-emerald-100 text-emerald-700 text-[9px] font-bold px-2 py-0.5 rounded-full block text-center mb-1">কাজ করতেছে (Active)</span>
+                                <p class="text-[9px] text-slate-400">টাস্ক সম্পন্ন: ১২টি</p>
                             </div>
                         </div>
 
-                        <!-- েব্বার ২ (পেন্ডিং/বাকি) -->
                         <div class="flex items-center justify-between p-2.5 bg-slate-50 border border-slate-100 rounded-xl">
                             <div class="flex items-center gap-2.5">
                                 <div class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center text-xs font-bold text-amber-700">SI</div>
@@ -211,8 +202,8 @@
                                 </div>
                             </div>
                             <div class="text-right">
-                                <span class="bg-amber-100 text-amber-700 text-[9px] font-bold px-2 py-0.5 rounded-full block text-center mb-1">কাজ বাকি আছে</span>
-                                <p class="text-[9px] text-slate-400">টাস্ক সম্পন্ন: ০/১৫</p>
+                                <span class="bg-amber-100 text-amber-700 text-[9px] font-bold px-2 py-0.5 rounded-full block text-center mb-1">বাকি আছে (Pending)</span>
+                                <p class="text-[9px] text-slate-400">টাস্ক সম্পন্ন: ০টি</p>
                             </div>
                         </div>
                     </div>
@@ -232,7 +223,7 @@
                     
                     <ul class="text-[11px] text-slate-600 space-y-1.5 list-disc pl-4 font-semibold">
                         <li>অন্তরূণ <span class="text-indigo-600 font-bold">২০০টি বিজ্ঞাপন/ভিডিও</span> দেখতে হবে। (আপনার বর্তমান: 0/200)</li>
-                        <li><span class="text-slate-800 font-bold">অথবা</span> অন্তত <span class="text-emerald-600 font-bold">২০টি সফল রেফার</span> করতে হবে। (আপনার বর্তমান: 2/20)</li>
+                        <li><span class="text-slate-800 font-bold">অথবা</span> অন্তত <span class="text-emerald-600 font-bold">২০টি সফল রেফার</span> করতে হবে। (আপনার বর্তমান: 0/20)</li>
                         <li>সর্বনিম্ন উত্তোলনের পরিমাণ: <span class="text-rose-600 font-bold">৳১৫০০.০০ টাকা</span>।</li>
                     </ul>
                 </div>
@@ -322,4 +313,9 @@
             const activeIndex = { 'home': 0, 'tasks': 1, 'invite': 2, 'wallet': 3, 'support': 4 }[tabId];
             if(activeIndex !== undefined) {
                 document.querySelectorAll('.nav-btn')[activeIndex].classList.add('text-indigo-600');
-                document.querySelectorAll('.nav-btn')[activeIndex].classList.remove('text-slate-400')
+                document.querySelectorAll('.nav-btn')[activeIndex].classList.remove('text-slate-400');
+            }
+        }
+    </script>
+</body>
+</html>
