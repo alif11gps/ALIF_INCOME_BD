@@ -16,30 +16,33 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-h: 100vh;
+            min-height: 100vh;
             margin: 0;
+            overflow: hidden; /* বাইরের স্ক্রিন স্ক্রলিং ব্লক */
         }
-        /* মোবাইল স্ক্রিন সাইজ লক করার জন্য ফিক্সড কন্টেইনার */
+        
+        /* সম্পূর্ণ ফিক্সড এবং নড়াচড়াহীন মোবাইল কন্টেইনার */
         .app-container {
             width: 100%;
             max-width: 420px;
             height: 100vh;
-            max-height: 850px;
             background-color: #f8fafc;
             display: flex;
             flex-direction: column;
             position: relative;
             overflow: hidden;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            border-radius: 0px;
         }
+
         @media (min-width: 450px) {
             .app-container {
-                border-radius: 30px;
+                border-radius: 32px;
                 border: 8px solid #334155;
-                height: 90vh;
+                height: 92vh;
+                max-height: 880px;
             }
         }
+
         .tab-content { display: none; }
         .tab-content.active { display: block; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
@@ -164,6 +167,20 @@
                         <button onclick="alert('লিংক কপি হয়েছে!')" class="p-2 bg-fuchsia-600 text-white rounded-lg text-xs font-bold shrink-0">📋</button>
                     </div>
                 </div>
+
+                <!-- আমন্ত্রিত বন্ধুদের লাইভ তালিকা (নতুন যুক্ত করা হয়েছে) -->
+                <div class="bg-white border border-slate-200 rounded-2xl p-4 shadow-sm space-y-3">
+                    <div class="flex justify-between items-center border-b border-slate-100 pb-2">
+                        <h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider">👥 আপনার আমন্ত্রিত মেম্বারস</h4>
+                        <span class="bg-indigo-50 text-indigo-600 text-[11px] font-bold px-2.5 py-0.5 rounded-full">মোট: 0 জন</span>
+                    </div>
+                    
+                    <!-- মেম্বার লিস্ট এম্পটি স্টেট -->
+                    <div class="text-center py-4 space-y-1">
+                        <p class="text-xs text-slate-400 font-medium">এখনো কোনো বন্ধু আপনার লিংকে যোগ দেয়নি।</p>
+                        <p class="text-[10px] text-indigo-500">লিংক শেয়ার করে মেম্বার বাড়ান!</p>
+                    </div>
+                </div>
             </section>
 
             <!-- --- TAB 4: ওয়ালেট ও উইথড্র (Wallet) --- -->
@@ -172,13 +189,12 @@
                     <span>💰</span> উত্তোলন করুন
                 </button>
 
-                <!-- উত্তোলনের নতুন শর্তাবলী কার্ড -->
                 <div class="bg-amber-50 border border-amber-200 p-4 rounded-2xl space-y-3">
                     <h4 class="text-xs font-bold text-amber-800 flex items-center gap-1">⚠️ উত্তোলনের শর্তাবলী (ALIF_INCOME_BD)</h4>
                     <p class="text-[11px] text-amber-700 leading-relaxed">টাকা উইথড্র করার জন্য নিচে দেওয়া যেকোনো **একটি শর্ত** অবশ্যই পূরণ করতে হবে:</p>
                     
                     <ul class="text-[11px] text-slate-600 space-y-1.5 list-disc pl-4 font-semibold">
-                        <li>অন্তরূণ <span class="text-indigo-600 font-bold">২০০টি বিজ্ঞাপন/ভিডিও</span> দেখতে হবে। (আপনার বর্তমান: 0/200)</li>
+                        <li>ন্যূনতম <span class="text-indigo-600 font-bold">২০০টি বিজ্ঞাপন/ভিডিও</span> দেখতে হবে। (আপনার বর্তমান: 0/200)</li>
                         <li><span class="text-slate-800 font-bold">অথবা</span> অন্তত <span class="text-emerald-600 font-bold">২০টি সফল রেফার</span> করতে হবে। (আপনার বর্তমান: 0/20)</li>
                         <li>সর্বনিম্ন উত্তোলনের পরিমাণ: <span class="text-rose-600 font-bold">৳১৫০০.০০ টাকা</span>।</li>
                     </ul>
