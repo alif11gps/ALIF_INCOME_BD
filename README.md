@@ -18,31 +18,28 @@
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            overflow: hidden; /* বাইরের স্ক্রিন স্ক্রলিং ব্লক */
+            overflow: hidden;
         }
-        
-        /* সম্পূর্ণ ফিক্সড এবং নড়াচড়াহীন মোবাইল কন্টেইনার */
         .app-container {
             width: 100%;
             max-width: 420px;
             height: 100vh;
+            max-height: 850px;
             background-color: #f8fafc;
             display: flex;
             flex-direction: column;
             position: relative;
             overflow: hidden;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border-radius: 0px;
         }
-
         @media (min-width: 450px) {
             .app-container {
-                border-radius: 32px;
+                border-radius: 30px;
                 border: 8px solid #334155;
-                height: 92vh;
-                max-height: 880px;
+                height: 90vh;
             }
         }
-
         .tab-content { display: none; }
         .tab-content.active { display: block; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
@@ -114,7 +111,7 @@
                         <div class="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center text-lg font-bold">👥</div>
                         <div>
                             <span class="text-[11px] text-slate-400 block font-semibold">সফল রেফার</span>
-                            <span class="text-base font-bold text-slate-800">0 / 20</span>
+                            <span class="text-base font-bold text-slate-800">2 / 20</span>
                         </div>
                     </div>
                 </div>
@@ -150,7 +147,7 @@
                 </div>
             </section>
 
-            <!-- --- TAB 3: রেফার (Invite) --- -->
+            <!-- --- TAB 3: রেফার ও হিস্টরি (Invite & History) --- -->
             <section id="invite" class="tab-content space-y-4">
                 <div class="bg-slate-900 text-white p-5 rounded-3xl space-y-4 shadow-lg">
                     <div class="space-y-1.5">
@@ -168,17 +165,47 @@
                     </div>
                 </div>
 
-                <!-- আমন্ত্রিত বন্ধুদের লাইভ তালিকা (নতুন যুক্ত করা হয়েছে) -->
+                <!-- 🔴 নতুন সংযুক্ত: আমন্ত্রিত বন্ধুদের লাইভ হিস্টরি ও কাজের স্ট্যাটাস -->
                 <div class="bg-white border border-slate-200 rounded-2xl p-4 shadow-sm space-y-3">
                     <div class="flex justify-between items-center border-b border-slate-100 pb-2">
-                        <h4 class="text-xs font-bold text-slate-700 uppercase tracking-wider">👥 আপনার আমন্ত্রিত মেম্বারস</h4>
-                        <span class="bg-indigo-50 text-indigo-600 text-[11px] font-bold px-2.5 py-0.5 rounded-full">মোট: 0 জন</span>
+                        <div>
+                            <h4 class="text-xs font-bold text-slate-800 uppercase tracking-wider">👥 আমন্ত্রিত বন্ধুদের তালিকা</h4>
+                            <p class="text-[10px] text-slate-400">কারা জয়েন করেছে ও কাজ করছে দেখুন</p>
+                        </div>
+                        <span class="bg-indigo-50 text-indigo-600 text-xs font-bold px-2.5 py-1 rounded-full">মোট: ২ জন</span>
                     </div>
-                    
-                    <!-- মেম্বার লিস্ট এম্পটি স্টেট -->
-                    <div class="text-center py-4 space-y-1">
-                        <p class="text-xs text-slate-400 font-medium">এখনো কোনো বন্ধু আপনার লিংকে যোগ দেয়নি।</p>
-                        <p class="text-[10px] text-indigo-500">লিংক শেয়ার করে মেম্বার বাড়ান!</p>
+
+                    <!-- মেম্বার লিস্ট টেবিল/হিস্টরি কার্ডস -->
+                    <div class="space-y-2">
+                        <!-- মেম্বার ১ -->
+                        <div class="flex items-center justify-between p-2.5 bg-slate-50 border border-slate-100 rounded-xl">
+                            <div class="flex items-center gap-2.5">
+                                <div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-xs font-bold text-emerald-700">RA</div>
+                                <div>
+                                    <h5 class="text-xs font-bold text-slate-700">Rakib Ahmed</h5>
+                                    <p class="text-[10px] text-slate-400">আইডি: #584920</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="bg-emerald-100 text-emerald-700 text-[9px] font-bold px-2 py-0.5 rounded-full block text-center mb-1">কাজ করতেছে (Active)</span>
+                                <p class="text-[9px] text-slate-400">টাস্ক সম্পন্ন: ১২টি</p>
+                            </div>
+                        </div>
+
+                        <!-- মেম্বার ২ -->
+                        <div class="flex items-center justify-between p-2.5 bg-slate-50 border border-slate-100 rounded-xl">
+                            <div class="flex items-center gap-2.5">
+                                <div class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center text-xs font-bold text-amber-700">SI</div>
+                                <div>
+                                    <h5 class="text-xs font-bold text-slate-700">Sabbir Islam</h5>
+                                    <p class="text-[10px] text-slate-400">আইডি: #584115</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="bg-amber-100 text-amber-700 text-[9px] font-bold px-2 py-0.5 rounded-full block text-center mb-1">বাকি আছে (Pending)</span>
+                                <p class="text-[9px] text-slate-400">টাস্ক সম্পন্ন: ০টি</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -195,7 +222,7 @@
                     
                     <ul class="text-[11px] text-slate-600 space-y-1.5 list-disc pl-4 font-semibold">
                         <li>ন্যূনতম <span class="text-indigo-600 font-bold">২০০টি বিজ্ঞাপন/ভিডিও</span> দেখতে হবে। (আপনার বর্তমান: 0/200)</li>
-                        <li><span class="text-slate-800 font-bold">অথবা</span> অন্তত <span class="text-emerald-600 font-bold">২০টি সফল রেফার</span> করতে হবে। (আপনার বর্তমান: 0/20)</li>
+                        <li><span class="text-slate-800 font-bold">অথবা</span> অন্তত <span class="text-emerald-600 font-bold">২০টি সফল রেফার</span> করতে হবে। (আপনার বর্তমান: 2/20)</li>
                         <li>সর্বনিম্ন উত্তোলনের পরিমাণ: <span class="text-rose-600 font-bold">৳১৫০০.০০ টাকা</span>।</li>
                     </ul>
                 </div>
