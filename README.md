@@ -16,10 +16,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            min-h: 100vh;
             margin: 0;
-            overflow: hidden;
         }
+        /* মোবাইল স্ক্রিন সাইজ লক করার জন্য ফিক্সড কন্টেইনার */
         .app-container {
             width: 100%;
             max-width: 420px;
@@ -111,7 +111,7 @@
                         <div class="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center text-lg font-bold">👥</div>
                         <div>
                             <span class="text-[11px] text-slate-400 block font-semibold">সফল রেফার</span>
-                            <span class="text-base font-bold text-slate-800">2 / 20</span>
+                            <span class="text-base font-bold text-slate-800">0 / 20</span>
                         </div>
                     </div>
                 </div>
@@ -147,7 +147,7 @@
                 </div>
             </section>
 
-            <!-- --- TAB 3: রেফার ও হিস্টরি (Invite & History) --- -->
+            <!-- --- TAB 3: রেফার (Invite) --- -->
             <section id="invite" class="tab-content space-y-4">
                 <div class="bg-slate-900 text-white p-5 rounded-3xl space-y-4 shadow-lg">
                     <div class="space-y-1.5">
@@ -164,50 +164,6 @@
                         <button onclick="alert('লিংক কপি হয়েছে!')" class="p-2 bg-fuchsia-600 text-white rounded-lg text-xs font-bold shrink-0">📋</button>
                     </div>
                 </div>
-
-                <!-- 🔴 নতুন সংযুক্ত: আমন্ত্রিত বন্ধুদের লাইভ হিস্টরি ও কাজের স্ট্যাটাস -->
-                <div class="bg-white border border-slate-200 rounded-2xl p-4 shadow-sm space-y-3">
-                    <div class="flex justify-between items-center border-b border-slate-100 pb-2">
-                        <div>
-                            <h4 class="text-xs font-bold text-slate-800 uppercase tracking-wider">👥 আমন্ত্রিত বন্ধুদের তালিকা</h4>
-                            <p class="text-[10px] text-slate-400">কারা জয়েন করেছে ও কাজ করছে দেখুন</p>
-                        </div>
-                        <span class="bg-indigo-50 text-indigo-600 text-xs font-bold px-2.5 py-1 rounded-full">মোট: ২ জন</span>
-                    </div>
-
-                    <!-- মেম্বার লিস্ট টেবিল/হিস্টরি কার্ডস -->
-                    <div class="space-y-2">
-                        <!-- মেম্বার ১ -->
-                        <div class="flex items-center justify-between p-2.5 bg-slate-50 border border-slate-100 rounded-xl">
-                            <div class="flex items-center gap-2.5">
-                                <div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-xs font-bold text-emerald-700">RA</div>
-                                <div>
-                                    <h5 class="text-xs font-bold text-slate-700">Rakib Ahmed</h5>
-                                    <p class="text-[10px] text-slate-400">আইডি: #584920</p>
-                                </div>
-                            </div>
-                            <div class="text-right">
-                                <span class="bg-emerald-100 text-emerald-700 text-[9px] font-bold px-2 py-0.5 rounded-full block text-center mb-1">কাজ করতেছে (Active)</span>
-                                <p class="text-[9px] text-slate-400">টাস্ক সম্পন্ন: ১২টি</p>
-                            </div>
-                        </div>
-
-                        <!-- মেম্বার ২ -->
-                        <div class="flex items-center justify-between p-2.5 bg-slate-50 border border-slate-100 rounded-xl">
-                            <div class="flex items-center gap-2.5">
-                                <div class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center text-xs font-bold text-amber-700">SI</div>
-                                <div>
-                                    <h5 class="text-xs font-bold text-slate-700">Sabbir Islam</h5>
-                                    <p class="text-[10px] text-slate-400">আইডি: #584115</p>
-                                </div>
-                            </div>
-                            <div class="text-right">
-                                <span class="bg-amber-100 text-amber-700 text-[9px] font-bold px-2 py-0.5 rounded-full block text-center mb-1">বাকি আছে (Pending)</span>
-                                <p class="text-[9px] text-slate-400">টাস্ক সম্পন্ন: ০টি</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </section>
 
             <!-- --- TAB 4: ওয়ালেট ও উইথড্র (Wallet) --- -->
@@ -216,13 +172,14 @@
                     <span>💰</span> উত্তোলন করুন
                 </button>
 
+                <!-- উত্তোলনের নতুন শর্তাবলী কার্ড -->
                 <div class="bg-amber-50 border border-amber-200 p-4 rounded-2xl space-y-3">
                     <h4 class="text-xs font-bold text-amber-800 flex items-center gap-1">⚠️ উত্তোলনের শর্তাবলী (ALIF_INCOME_BD)</h4>
                     <p class="text-[11px] text-amber-700 leading-relaxed">টাকা উইথড্র করার জন্য নিচে দেওয়া যেকোনো **একটি শর্ত** অবশ্যই পূরণ করতে হবে:</p>
                     
                     <ul class="text-[11px] text-slate-600 space-y-1.5 list-disc pl-4 font-semibold">
-                        <li>ন্যূনতম <span class="text-indigo-600 font-bold">২০০টি বিজ্ঞাপন/ভিডিও</span> দেখতে হবে। (আপনার বর্তমান: 0/200)</li>
-                        <li><span class="text-slate-800 font-bold">অথবা</span> অন্তত <span class="text-emerald-600 font-bold">২০টি সফল রেফার</span> করতে হবে। (আপনার বর্তমান: 2/20)</li>
+                        <li>অন্তরূণ <span class="text-indigo-600 font-bold">২০০টি বিজ্ঞাপন/ভিডিও</span> দেখতে হবে। (আপনার বর্তমান: 0/200)</li>
+                        <li><span class="text-slate-800 font-bold">অথবা</span> অন্তত <span class="text-emerald-600 font-bold">২০টি সফল রেফার</span> করতে হবে। (আপনার বর্তমান: 0/20)</li>
                         <li>সর্বনিম্ন উত্তোলনের পরিমাণ: <span class="text-rose-600 font-bold">৳১৫০০.০০ টাকা</span>।</li>
                     </ul>
                 </div>
