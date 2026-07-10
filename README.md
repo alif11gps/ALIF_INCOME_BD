@@ -2,94 +2,64 @@
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ALIF_INCOME_BD</title>
+    <title>ALIF_INCOME_BD - অফিসিয়াল আর্নিং প্ল্যাটফর্ম</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background-color: #f0f2f5; font-family: sans-serif; }
-        .app-card { background: white; border-radius: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .nav-bar { background: #2d3436; color: white; position: fixed; bottom: 0; width: 100%; max-width: 420px; border-radius: 20px 20px 0 0; display: flex; justify-content: space-around; padding: 15px; }
+        /* লোডিং স্ক্রিন স্টাইল */
+        #splash-screen {
+            position: fixed;
+            inset: 0;
+            background-color: #0f172a;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        .logo-text { color: white; font-size: 24px; font-weight: 900; letter-spacing: 2px; }
+        
+        body { font-family: 'Hind Siliguri', sans-serif; background-color: #0f172a; color: #1e293b; user-select: none; -webkit-tap-highlight-color: transparent; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .app-container { width: 100%; max-width: 420px; height: 100vh; max-height: 850px; background-color: #f8fafc; display: flex; flex-direction: column; position: relative; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
+        @media (min-width: 450px) { .app-container { border-radius: 30px; border: 8px solid #334155; height: 90vh; } }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
     </style>
 </head>
-<body class="flex justify-center items-center min-h-screen">
+<body>
 
-<div class="w-full max-w-[420px] h-screen bg-[#f8fafc] overflow-hidden relative pb-20">
-    <!-- Header -->
-    <div class="bg-[#5c4ae0] p-6 rounded-b-[40px] text-white">
-        <div class="flex justify-between items-center mb-4">
-            <span class="text-xl font-bold">ALIF_INCOME_BD</span>
-            <div class="bg-white/20 p-2 rounded-full">🎧</div>
-        </div>
-        <div class="bg-white/10 p-4 rounded-xl text-center">
-            <p class="text-xs opacity-80">TOTAL BALANCE</p>
-            <h2 class="text-3xl font-bold">৳<span id="balance">0.00</span></h2>
-        </div>
+    <div id="splash-screen">
+        <div class="w-16 h-16 bg-indigo-600 rounded-2xl flex items-center justify-center text-white text-xl font-bold mb-4 animate-bounce">ALIF</div>
+        <div class="logo-text">ALIF_INCOME_BD</div>
     </div>
 
-    <!-- Main Section -->
-    <div class="p-4 space-y-4">
-        <div class="grid grid-cols-2 gap-4">
-            <div class="app-card p-4 text-center">
-                <p class="text-[10px] text-gray-500">Earned</p>
-                <p class="font-bold">৳<span id="earned">0.00</span></p>
+    <div class="app-container">
+        <header class="bg-white border-b border-slate-200 px-4 py-3 flex items-center justify-between sticky top-0 z-50 shadow-sm shrink-0">
+            <div class="flex items-center gap-2">
+                <div class="w-7 h-7 bg-indigo-600 rounded-lg flex items-center justify-center text-white text-sm font-bold">💼</div>
+                <span class="text-base font-black text-slate-800 tracking-wider">ALIF_INCOME_BD</span>
             </div>
-            <div class="app-card p-4 text-center">
-                <p class="text-[10px] text-gray-500">Referrals</p>
-                <p class="font-bold"><span id="ref-count">0</span></p>
+            <div class="bg-indigo-50 px-3 py-1 rounded-full border border-indigo-100 flex items-center gap-1.5">
+                <span class="text-indigo-600 text-xs font-bold">৳</span>
+                <span id="nav-balance" class="font-bold text-indigo-700 text-sm">0.00</span>
             </div>
+        </header>
+
         </div>
 
-        <!-- Ads -->
-        <div class="app-card p-4">
-            <p class="font-bold mb-2">Daily Ads</p>
-            <button onclick="watchAd()" class="w-full bg-blue-500 text-white py-3 rounded-lg font-bold">ভিডিও দেখুন (১০টি)</button>
-            <p class="text-xs mt-2 text-center">আজকের ভিডিও: <span id="ad-count">0</span>/10</p>
-        </div>
+    <script>
+        // লোডিং লোগো হাইড করা
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('splash-screen').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('splash-screen').style.display = 'none';
+                }, 500);
+            }, 2000); // ২ সেকেন্ড লোগো দেখাবে
+        });
 
-        <!-- Withdraw -->
-        <div class="app-card p-4 space-y-2">
-            <p class="font-bold">Withdraw (Min ৳1500)</p>
-            <select id="method" class="w-full p-2 border rounded">
-                <option>বিকাশ</option>
-                <option>নগদ</option>
-            </select>
-            <input id="number" type="text" placeholder="Number" class="w-full p-2 border rounded">
-            <button onclick="withdraw()" class="w-full bg-slate-800 text-white py-2 rounded font-bold">Request Withdraw</button>
-        </div>
-    </div>
-
-    <!-- Navigation -->
-    <div class="nav-bar">
-        <span>🏠</span>
-        <span>🏆</span>
-        <span>👤</span>
-    </div>
-</div>
-
-<script>
-    let balance = 0, earned = 0, refs = 0, ads = 0, totalVideos = 0;
-
-    function watchAd() {
-        if(ads < 10) {
-            ads++; totalVideos++; balance += 10; earned += 10;
-            updateUI(); alert("৳১০ যোগ হয়েছে!");
-        } else { alert("আজকের লিমিট শেষ!"); }
-    }
-
-    function withdraw() {
-        if(balance >= 1500 && (totalVideos >= 200 || refs >= 20)) {
-            alert("উত্তোলন রিকোয়েস্ট সফল হয়েছে!");
-        } else {
-            alert("শর্ত পূরণ হয়নি! (ন্যূনতম ১৫০০ টাকা এবং ২০০ ভিডিও বা ২০ রেফার প্রয়োজন)");
-        }
-    }
-
-    function updateUI() {
-        document.getElementById('balance').innerText = balance.toFixed(2);
-        document.getElementById('earned').innerText = earned.toFixed(2);
-        document.getElementById('ref-count').innerText = refs;
-        document.getElementById('ad-count').innerText = ads;
-    }
-</script>
+        // আপনার আগের জাভাস্ক্রিপ্ট লজিক এখানে বসান...
+    </script>
 </body>
 </html>
